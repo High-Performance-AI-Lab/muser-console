@@ -1,0 +1,32 @@
+{
+  "loopback-b": {
+    "body_sha256": "c73a03c44566c33f90ecf05aa7f9286fd735e4c9948e44cdb6325b68a05be581",
+    "error_type": null,
+    "expected_status": 200,
+    "status": 200
+  },
+  "mismatch-a": {
+    "body_sha256": "fe8afde91a381301b53e572a35e3e5417ec6a0d1bd74c5607caa4bbc9cf127e0",
+    "error_type": "upstream_unreachable",
+    "expected_status": 502,
+    "status": 502
+  },
+  "other-ca-a": {
+    "body_sha256": "4d3460ea354c9221577d9bbff05297e8a42463dc481b6be1615addb8604debbe",
+    "error_type": "upstream_unreachable",
+    "expected_status": 502,
+    "status": 502
+  },
+  "platform-a": {
+    "body_sha256": "1550b262fca0d77e4e96c1a34a8b974ae746d0effe2887637ecfa65ab8a038f0",
+    "error_type": "upstream_unreachable",
+    "expected_status": 502,
+    "status": 502
+  },
+  "secure-a": {
+    "body_sha256": "0b3a223067a66c5baa6e916098b0321dfeac5a40170f290371f978f3e272e6b4",
+    "error_type": null,
+    "expected_status": 200,
+    "status": 200
+  }
+}

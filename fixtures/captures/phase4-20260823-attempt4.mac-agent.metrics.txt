@@ -1,0 +1,22 @@
+# HELP muser_agent_up 1 when this scrape served a real powermetrics reading, 0 when the exporter could not obtain one.
+# TYPE muser_agent_up gauge
+muser_agent_up{agent="mac"} 1
+# HELP muser_agent_scrape_duration_seconds Wall-clock seconds this scrape spent obtaining its reading; near zero when a reading taken moments ago was reused.
+# TYPE muser_agent_scrape_duration_seconds gauge
+muser_agent_scrape_duration_seconds{agent="mac"} 0.000101625
+# HELP muser_agent_sample_age_seconds Age of the powermetrics sample this scrape served, at the moment it was served.
+# TYPE muser_agent_sample_age_seconds gauge
+muser_agent_sample_age_seconds{agent="mac"} 0.144240583
+# powermetrics sample completed at unix 1787525290.552, 0.144 s before this scrape. A reading is served for at most 0.500 s and then re-measured; an older one is never served.
+# muser_host_package_power_watts is read from the powermetrics line "Combined Power (CPU + GPU + ANE)".
+# HELP muser_host_package_power_watts Combined package power for this host, as reported by powermetrics.
+# TYPE muser_host_package_power_watts gauge
+muser_host_package_power_watts{host="alvaros-mac-studio",source="Combined Power (CPU + GPU + ANE)"} 2.922
+# muser_host_cpu_power_watts is read from the powermetrics line "CPU Power".
+# HELP muser_host_cpu_power_watts CPU power for this host, as reported by the powermetrics cpu_power sampler.
+# TYPE muser_host_cpu_power_watts gauge
+muser_host_cpu_power_watts{host="alvaros-mac-studio",source="CPU Power"} 1.553
+# muser_host_gpu_power_watts is read from the powermetrics line "GPU Power".
+# HELP muser_host_gpu_power_watts GPU power for this host, as reported by the powermetrics gpu_power sampler.
+# TYPE muser_host_gpu_power_watts gauge
+muser_host_gpu_power_watts{host="alvaros-mac-studio",source="GPU Power"} 1.369

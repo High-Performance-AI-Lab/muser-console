@@ -1,0 +1,24 @@
+[
+  {
+    "body": {
+      "error": {
+        "message": "the history plane is disabled on this console",
+        "type": "history_unavailable"
+      }
+    },
+    "byte_exact": true,
+    "path": "/v1/history/remote-a",
+    "status": 503
+  },
+  {
+    "body": {
+      "error": {
+        "message": "the history plane is disabled on this console",
+        "type": "history_unavailable"
+      }
+    },
+    "byte_exact": true,
+    "path": "/v1/history/remote-a/series",
+    "status": 503
+  }
+]

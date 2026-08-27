@@ -1,0 +1,51 @@
+[package]
+name = "console-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+name = "console_server"
+path = "src/lib.rs"
+
+[[bin]]
+name = "muser-console"
+path = "src/main.rs"
+
+[dependencies]
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "tokio", "ws"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time", "signal", "sync"] }
+hyper = { version = "1", features = ["client", "http1"] }
+hyper-util = { version = "0.1", features = ["client-legacy", "http1", "tokio"] }
+hyper-rustls = { version = "0.27", default-features = false, features = ["http1", "ring", "tls12"] }
+http-body-util = "0.1"
+tokio-tungstenite = { version = "0.29", features = ["rustls-tls-native-roots"] }
+futures-util = { version = "0.3", default-features = false, features = ["std", "sink"] }
+serde = { version = "1", features = ["derive"] }
+# float_roundtrip: serde_json's default float parser is off by one ULP on
+# some 17-significant-digit values, so a number the engine reported would be
+# stored as a neighbouring number and disagree with the browser's own
+# (correctly rounded) parse of the same snapshot. The feature adds no crates
+# to the tree and makes "the chart and the tile are the same number" true to
+# the last bit.
+serde_json = { version = "1", features = ["float_roundtrip", "preserve_order"] }
+toml = "0.8"
+base64 = "0.22"
+getrandom = "0.3"
+qrcodegen = "1.8"
+sha2 = "0.10"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+rustls-native-certs = "0.8"
+rustls-pemfile = "2"
+axum-server = { version = "0.8", default-features = false, features = ["tls-rustls-no-provider"] }
+# The history store. `bundled` compiles the amalgamation in-tree: no system
+# sqlite, no dynamic link surface, reproducible across the fleet's machines.
+rusqlite = { version = "0.38", features = ["bundled"] }
+
+[target.'cfg(unix)'.dependencies]
+# Already in the graph via tokio; used directly only for O_NOFOLLOW.
+libc = "0.2"
+
+[dev-dependencies]
+jsonschema = { version = "0.33", default-features = false }

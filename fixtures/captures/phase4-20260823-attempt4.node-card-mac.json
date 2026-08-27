@@ -1,0 +1,93 @@
+{
+  "card": {
+    "comparisons": {
+      "cpu_power_watts": {
+        "display": 1.7,
+        "measured": 1.749,
+        "rounding_tolerance": 0.050001
+      },
+      "gpu_power_watts": {
+        "display": 1.8,
+        "measured": 1.819,
+        "rounding_tolerance": 0.050001
+      },
+      "package_power_watts": {
+        "display": 3.6,
+        "measured": 3.568,
+        "rounding_tolerance": 0.050001
+      }
+    },
+    "honesty_badges": [
+      "agent-measured"
+    ],
+    "identity": "package power",
+    "pass": true,
+    "text": "HOST\npackage power\nagent mac-agent \u00b7 mac\n3.6\nWATTS \u00b7 PACKAGE AGENT-MEASURED\nCPU\n1.7 W\nGPU\n1.8 W"
+  },
+  "card_history_to_ms": 1787525328981,
+  "cards": [
+    {
+      "big": "3.6",
+      "honesty_badges": [
+        "agent-measured"
+      ],
+      "identity": "package power",
+      "metrics": {
+        "cpu": "1.7 W",
+        "gpu": "1.8 W"
+      },
+      "text": "HOST\npackage power\nagent mac-agent \u00b7 mac\n3.6\nWATTS \u00b7 PACKAGE AGENT-MEASURED\nCPU\n1.7 W\nGPU\n1.8 W"
+    }
+  ],
+  "history_heading": "local-b",
+  "history_instance": "local-b",
+  "history_window_present": true,
+  "instance": "local-b",
+  "panel": {
+    "gpus": [],
+    "host": {
+      "cpu": 1.749,
+      "gpu": 1.819,
+      "pkg": 3.568
+    }
+  },
+  "pass": true,
+  "series": {
+    "host_cpu_power_watts": {
+      "browser": {
+        "honesty": "agent-measured",
+        "ts": 1787525328980,
+        "v": 1.749
+      },
+      "exact": true,
+      "history": [
+        1787525328980,
+        1.749
+      ]
+    },
+    "host_gpu_power_watts": {
+      "browser": {
+        "honesty": "agent-measured",
+        "ts": 1787525328980,
+        "v": 1.819
+      },
+      "exact": true,
+      "history": [
+        1787525328980,
+        1.819
+      ]
+    },
+    "host_package_power_watts": {
+      "browser": {
+        "honesty": "agent-measured",
+        "ts": 1787525328980,
+        "v": 3.568
+      },
+      "exact": true,
+      "history": [
+        1787525328980,
+        3.568
+      ]
+    }
+  }
+}

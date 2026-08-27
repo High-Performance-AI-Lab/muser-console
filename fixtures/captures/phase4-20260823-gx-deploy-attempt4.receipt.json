@@ -1,0 +1,164 @@
+{
+  "after": {
+    "architecture": "aarch64",
+    "build_image": "sha256:346182e770acabf336789808931b7f73316cc1e69f4ce6fc47e6843a9e24381a|rust@sha256:7c4ae649a84014c467d79319bbf17ce2632ae8b8be123ac2fb2ea5be46823f31",
+    "captured_at": "2026-08-23T21:16:26.101641+00:00",
+    "container": {
+      "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+      "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+      "network_mode": "host",
+      "producer_socket_ready": true,
+      "restart_count": 0,
+      "started_at": "2026-08-23T10:29:36.727545973Z",
+      "state": "running",
+      "supervisor_running": true
+    },
+    "filesystem": "/dev/nvme0n1p2 982819848192 671810297856 261009514496  73% /",
+    "gpu_lock": {
+      "holders": [
+        "python3         623756 FLOCK WRITE /tmp/ferrite.gpu.lock"
+      ],
+      "stat": "regular empty file|664|producer-node|producer-node|0|7340035"
+    },
+    "host": "producer-node",
+    "nvml_visible_devices": [
+      "0, NVIDIA GB10, GPU-60e8a75d-ae8e-6edd-c48e-e4c7f21bb019, 0, 8.46, 42, [N/A], [N/A]"
+    ],
+    "port_9707_listeners": [
+      "LISTEN 0      128    0.0.0.0:9707 0.0.0.0:*"
+    ],
+    "service": {
+      "ActiveState": "active",
+      "LoadState": "loaded",
+      "SubState": "running",
+      "UnitFileState": "enabled"
+    },
+    "target_present": true
+  },
+  "attempt": 4,
+  "before": {
+    "architecture": "aarch64",
+    "build_image": "sha256:346182e770acabf336789808931b7f73316cc1e69f4ce6fc47e6843a9e24381a|rust@sha256:7c4ae649a84014c467d79319bbf17ce2632ae8b8be123ac2fb2ea5be46823f31",
+    "captured_at": "2026-08-23T21:16:02.566955+00:00",
+    "container": {
+      "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+      "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+      "network_mode": "host",
+      "producer_socket_ready": true,
+      "restart_count": 0,
+      "started_at": "2026-08-23T10:29:36.727545973Z",
+      "state": "running",
+      "supervisor_running": true
+    },
+    "filesystem": "/dev/nvme0n1p2 982819848192 671652745216 261167067136  73% /",
+    "gpu_lock": {
+      "holders": [
+        "python3         623756 FLOCK WRITE /tmp/ferrite.gpu.lock"
+      ],
+      "stat": "regular empty file|664|producer-node|producer-node|0|7340035"
+    },
+    "host": "producer-node",
+    "nvml_visible_devices": [
+      "0, NVIDIA GB10, GPU-60e8a75d-ae8e-6edd-c48e-e4c7f21bb019, 0, 8.34, 41, [N/A], [N/A]"
+    ],
+    "port_9707_listeners": [],
+    "service": {
+      "ActiveState": "inactive",
+      "LoadState": "not-found",
+      "SubState": "dead",
+      "UnitFileState": ""
+    },
+    "target_present": false
+  },
+  "build": {
+    "artifact_sha256": "0a9972a950b1b0bf94655f84b9cbd71854355ca65f2aa8f7991eb247b231825d",
+    "dynamic_linkage": [
+      "linux-vdso.so.1 (0x0000e6fbdd33c000)",
+      "\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000e6fbdd180000)",
+      "\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000e6fbdd0d0000)",
+      "\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000e6fbdcf10000)",
+      "\t/lib/ld-linux-aarch64.so.1 (0x0000e6fbdd300000)"
+    ],
+    "file": "/home/producer-node/.muser/lane/gx10/tasks/muser-console-gx10-exporter-attempt-4/target/release/gx10-exporter: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=d1a9d6c0f7dff2567e435bbca533221465d677ed, for GNU/Linux 3.7.0, not stripped",
+    "image": "docker.io/library/rust@sha256:7c4ae649a84014c467d79319bbf17ce2632ae8b8be123ac2fb2ea5be46823f31",
+    "image_identity": "sha256:346182e770acabf336789808931b7f73316cc1e69f4ce6fc47e6843a9e24381a|rust@sha256:7c4ae649a84014c467d79319bbf17ce2632ae8b8be123ac2fb2ea5be46823f31",
+    "machine": "AArch64",
+    "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11)"
+  },
+  "candidate": {
+    "bytes": 1329,
+    "gpu0_memory_available": false,
+    "gpu0_memory_unavailable_reason": "NVML omitted both memory fields",
+    "gpu0_required_series": true,
+    "health_byte_exact": true,
+    "sha256": "af5e6ce17645cb28222a996c87e8591c876d28403e8dcfc12a14cca8af7bdd39"
+  },
+  "container": "muser-redhat-native-f1-593b96a",
+  "failure": null,
+  "finished_at": "2026-08-23T21:16:27.834816+00:00",
+  "host": "producer-node",
+  "installed": {
+    "bytes": 1329,
+    "gpu0_memory_available": false,
+    "gpu0_memory_unavailable_reason": "NVML omitted both memory fields",
+    "gpu0_required_series": true,
+    "health_byte_exact": true,
+    "resident_identity_unchanged": true,
+    "resident_producer_healthy": true,
+    "service": {
+      "ActiveState": "active",
+      "LoadState": "loaded",
+      "SubState": "running",
+      "UnitFileState": "enabled"
+    },
+    "sha256": "0a89e8c7d6d49f8cc52f09c8dfe286f571bf23405fe712c660b7c50f04ad9499",
+    "target_sha256": "0a9972a950b1b0bf94655f84b9cbd71854355ca65f2aa8f7991eb247b231825d"
+  },
+  "outcome": "passed",
+  "package": {
+    "archive": "gx10-exporter-source.tar.gz",
+    "bytes": 25563,
+    "files": 12,
+    "scope": "gx10-exporter crate plus minimal workspace manifest and lock",
+    "sha256": "25c7eb534e193bfa82c951e30cebfe8dd30964a54e750bae7c94304ff2e8e12c"
+  },
+  "preinstall_recheck": {
+    "architecture": "aarch64",
+    "build_image": "sha256:346182e770acabf336789808931b7f73316cc1e69f4ce6fc47e6843a9e24381a|rust@sha256:7c4ae649a84014c467d79319bbf17ce2632ae8b8be123ac2fb2ea5be46823f31",
+    "captured_at": "2026-08-23T21:16:17.872048+00:00",
+    "container": {
+      "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+      "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+      "network_mode": "host",
+      "producer_socket_ready": true,
+      "restart_count": 0,
+      "started_at": "2026-08-23T10:29:36.727545973Z",
+      "state": "running",
+      "supervisor_running": true
+    },
+    "filesystem": "/dev/nvme0n1p2 982819848192 671808540672 261011271680  73% /",
+    "gpu_lock": {
+      "holders": [
+        "python3         623756 FLOCK WRITE /tmp/ferrite.gpu.lock"
+      ],
+      "stat": "regular empty file|664|producer-node|producer-node|0|7340035"
+    },
+    "host": "producer-node",
+    "nvml_visible_devices": [
+      "0, NVIDIA GB10, GPU-60e8a75d-ae8e-6edd-c48e-e4c7f21bb019, 0, 8.34, 42, [N/A], [N/A]"
+    ],
+    "port_9707_listeners": [],
+    "service": {
+      "ActiveState": "inactive",
+      "LoadState": "not-found",
+      "SubState": "dead",
+      "UnitFileState": ""
+    },
+    "target_present": false
+  },
+  "remote_task": "/home/producer-node/.muser/lane/gx10/tasks/muser-console-gx10-exporter-attempt-4",
+  "schema": "muser-console.gx10-exporter-deployment.v1",
+  "service": "muser-console-gx10-exporter.service",
+  "started_at": "2026-08-23T21:16:01.228374+00:00",
+  "target": "/usr/local/bin/gx10-exporter"
+}

@@ -1,0 +1,103 @@
+{
+  "accelerator_cell": "muser-console-phase1-live-acceptance-attempt-4",
+  "checks": {
+    "browser_dom_fresh_for_20s": {
+      "distinct_uptime_values": 8,
+      "max_frame_age_ms": 3575,
+      "pass": true,
+      "samples": 22,
+      "stale_samples": 0
+    },
+    "browser_request_cadence": {
+      "interval_seconds": [
+        0.700449,
+        2.302112,
+        0.699771,
+        2.30052,
+        0.699307,
+        2.29845,
+        0.701114,
+        2.299097,
+        0.701571,
+        2.29916,
+        0.699665,
+        2.299387,
+        0.701268
+      ],
+      "max_interval_seconds": 2.302112,
+      "mode": "loopback bearer snapshot polling (EventSource cannot attach headers)",
+      "pass": true,
+      "snapshot_requests": 14,
+      "window_seconds": 22.09
+    },
+    "capture_set_complete": {
+      "missing": [],
+      "pass": true
+    },
+    "credential_isolation": {
+      "browser_console_requests": 56,
+      "browser_engine_reference_requests": 24,
+      "console_engine_requests": 38,
+      "pass": true
+    },
+    "dashboard_values_units_labels_honesty_equal": {
+      "different_ids": [],
+      "pass": true,
+      "selectors": 44
+    },
+    "engine_live_model": {
+      "health": {
+        "accelerator_in_use": true,
+        "degraded": false,
+        "ok": true
+      },
+      "pass": true
+    },
+    "metrics_proxy_byte_exact": {
+      "console_bytes": 1770,
+      "engine_bytes": 1770,
+      "pass": true
+    },
+    "snapshot_stable_values_equal": {
+      "pass": true
+    },
+    "sse_real_stream_cadence": {
+      "frames": 20,
+      "max_interval_seconds": 1.366928,
+      "pass": true
+    }
+  },
+  "failure": null,
+  "finished_at": "2026-08-23T20:32:33.151848+00:00",
+  "inputs": {
+    "console": {
+      "bytes": 4706384,
+      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "sha256": "576ea8a5e12ceee72d70b5ac270e8e89d60ad2f45293a9bb61801e5a2764e413"
+    },
+    "edge": {
+      "bytes": 88464,
+      "path": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "sha256": "f2a9a1cfe6aacb173e3640584702cfbab634e6c3372710fa8a1c1dfa6bde0c89"
+    },
+    "engine": {
+      "bytes": 17768960,
+      "path": "/Users/you/Code/muser/target/release/muser",
+      "sha256": "aaf0f049dba6bea530ad0dcff13aab82aeb4f3641994231091d49bc66a3b13b2"
+    },
+    "metallib": {
+      "bytes": 7314848,
+      "path": "/data/receipts/llama-metal-89e0aa6fd362/llama.metallib",
+      "sha256": "c018ab9c01c18bf79a83272d25973a981138bdeec9ac677e63afef07b21ac033"
+    },
+    "model": {
+      "bytes": 16756681056,
+      "path": "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "sha256": "7e9b74b7c8875e9e265695df9613bf6290f2392e479ce740495a129019c488d8"
+    },
+    "ui_sha256": "cfbe199a8d57ecb497f5af1dec982309ec86677e66444d877a72c4458d4c29c3"
+  },
+  "outcome": "passed",
+  "schema": "muser-console.acceptance.phase1.v1",
+  "started_at": "2026-08-23T20:31:35.971287+00:00"
+}

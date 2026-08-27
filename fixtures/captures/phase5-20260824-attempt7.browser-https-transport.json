@@ -1,0 +1,6 @@
+{
+  "cookie_session": true,
+  "event_source_open": true,
+  "navigation_protocol": "h2",
+  "poll_fallback_active": false
+}

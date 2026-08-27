@@ -1,0 +1,280 @@
+{
+  "_schedule_label": {
+    "className": "tracklbl",
+    "display": "",
+    "hidden": false,
+    "text": "no transfers yet from this process",
+    "title": ""
+  },
+  "dEnergy": {
+    "className": "dv num",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "dFlop": {
+    "className": "dv num",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "dSec": {
+    "className": "dv num",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "ecCache": {
+    "className": "v num",
+    "display": "",
+    "hidden": false,
+    "text": "0.00",
+    "title": ""
+  },
+  "ecHit": {
+    "className": "num",
+    "display": "",
+    "hidden": false,
+    "text": "0%",
+    "title": ""
+  },
+  "ecRecomp": {
+    "className": "v num",
+    "display": "",
+    "hidden": false,
+    "text": "0.00",
+    "title": ""
+  },
+  "ecSpeed": {
+    "className": "num",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "evlog": {
+    "className": "evlog",
+    "display": "",
+    "hidden": false,
+    "text": "no session events yet",
+    "title": ""
+  },
+  "honEcon": {
+    "className": "tag",
+    "display": "none",
+    "hidden": false,
+    "text": "",
+    "title": ""
+  },
+  "honKv": {
+    "className": "tag t-meas",
+    "display": "inline-block",
+    "hidden": false,
+    "text": "measured",
+    "title": ""
+  },
+  "honNodes": {
+    "className": "tag t-mock",
+    "display": "inline-block",
+    "hidden": false,
+    "text": "not measured",
+    "title": ""
+  },
+  "honSessions": {
+    "className": "tag t-meas",
+    "display": "inline-block",
+    "hidden": false,
+    "text": "measured",
+    "title": ""
+  },
+  "honSpecdec": {
+    "className": "tag t-meas",
+    "display": "inline-block",
+    "hidden": false,
+    "text": "measured",
+    "title": ""
+  },
+  "honTransfers": {
+    "className": "tag t-meas",
+    "display": "inline-block",
+    "hidden": false,
+    "text": "measured",
+    "title": ""
+  },
+  "honWire": {
+    "className": "tag",
+    "display": "none",
+    "hidden": false,
+    "text": "",
+    "title": ""
+  },
+  "itl50": {
+    "className": "v",
+    "display": "",
+    "hidden": false,
+    "text": "0.0 ms",
+    "title": ""
+  },
+  "itl95": {
+    "className": "v",
+    "display": "",
+    "hidden": false,
+    "text": "0.0 ms",
+    "title": ""
+  },
+  "kvCap": {
+    "className": "cap",
+    "display": "",
+    "hidden": false,
+    "text": "",
+    "title": ""
+  },
+  "kvNope": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "",
+    "title": ""
+  },
+  "kvNopeB": {
+    "className": "sub num",
+    "display": "",
+    "hidden": false,
+    "text": "0 B",
+    "title": ""
+  },
+  "kvSwa": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "",
+    "title": ""
+  },
+  "kvSwaB": {
+    "className": "sub num",
+    "display": "",
+    "hidden": false,
+    "text": "0 B",
+    "title": ""
+  },
+  "kvTotal": {
+    "className": "sub num",
+    "display": "",
+    "hidden": false,
+    "text": "0 tok \u00b7 0 B",
+    "title": ""
+  },
+  "nodes": {
+    "className": "nodes",
+    "display": "",
+    "hidden": false,
+    "text": "No node telemetry yet \u2014 GPU stats appear when a node reports them",
+    "title": ""
+  },
+  "schedAccept": null,
+  "schedControl": null,
+  "schedGbps": null,
+  "schedHidden": null,
+  "schedSess": null,
+  "sessCount": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "0 live",
+    "title": ""
+  },
+  "sessRows": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "no active sessions",
+    "title": ""
+  },
+  "topoHint": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "Q4 \u00b7 52 layers \u00b7 13 global \u00b7 39 windowed \u00b7 Mac Metal decode + GX10 prefill receipts",
+    "title": ""
+  },
+  "ttft50": {
+    "className": "v",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "ttft95": {
+    "className": "v",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "uptime": {
+    "className": "mono",
+    "display": "",
+    "hidden": false,
+    "text": "00:00:26",
+    "title": ""
+  },
+  "viewers": {
+    "className": "mono",
+    "display": "",
+    "hidden": false,
+    "text": "0",
+    "title": ""
+  },
+  "wCli": {
+    "className": "gv num",
+    "display": "",
+    "hidden": false,
+    "text": "0",
+    "title": ""
+  },
+  "wDecTok": {
+    "className": "gv num",
+    "display": "",
+    "hidden": false,
+    "text": "0.0",
+    "title": ""
+  },
+  "wIn": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "0.0",
+    "title": ""
+  },
+  "wOut": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "\u2014",
+    "title": ""
+  },
+  "wQueue": {
+    "className": "gv num",
+    "display": "",
+    "hidden": false,
+    "text": "0",
+    "title": ""
+  },
+  "wRps": {
+    "className": "gv num",
+    "display": "",
+    "hidden": false,
+    "text": "0.0",
+    "title": ""
+  },
+  "wordmarkSub": {
+    "className": "",
+    "display": "",
+    "hidden": false,
+    "text": "serving Muse Glimmer-30B \u00b7 52 layers \u00b7 13 global \u00b7 39 windowed \u00b7 16.8 GB",
+    "title": ""
+  }
+}

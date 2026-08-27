@@ -1,0 +1,244 @@
+{
+  "accelerator_cell": "muser-console-phase4-live-attempt-4",
+  "checks": {
+    "direct_real_measurements": {
+      "gx10": {
+        "devices": [
+          {
+            "index": 0,
+            "name": "NVIDIA GB10",
+            "uuid_sha256": "63c0d7c765d3b91306113bed94e404cbbf11768552bc2b7e4de965447c3a68ad"
+          }
+        ],
+        "health_byte_exact": true,
+        "memory_availability": "unavailable",
+        "metrics_bytes": 1329,
+        "metrics_sha256": "13d50cc135714ea79ca1949cf8d1eb2ef144ef1466b4441d71333762533201f5",
+        "series": {
+          "gpu0_memory_total_bytes": null,
+          "gpu0_memory_used_bytes": null,
+          "gpu0_power_watts": 7.954,
+          "gpu0_temperature_celsius": 40.0,
+          "gpu0_utilization_ratio": 0.0
+        }
+      },
+      "mac": {
+        "health_byte_exact": true,
+        "metrics_bytes": 1810,
+        "metrics_sha256": "e4521ea9a4d90284376c1577467fc1272007ba2578f89c05dfc53e7bce7ba9b0",
+        "sample_age_seconds": 0.144240583,
+        "series": {
+          "host_cpu_power_watts": 1.553,
+          "host_gpu_power_watts": 1.369,
+          "host_package_power_watts": 2.922
+        }
+      },
+      "pass": true
+    },
+    "gx_resident_and_service_healthy": {
+      "pass": true,
+      "resident_after": {
+        "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+        "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+        "producer_socket_ready": true,
+        "restart_count": 0,
+        "started_at": "2026-08-23T22:36:51.12492927Z",
+        "state": "running",
+        "supervisor_running": true
+      },
+      "resident_before": {
+        "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+        "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+        "producer_socket_ready": true,
+        "restart_count": 0,
+        "started_at": "2026-08-23T22:36:51.12492927Z",
+        "state": "running",
+        "supervisor_running": true
+      },
+      "service_after": {
+        "ActiveState": "active",
+        "LoadState": "loaded",
+        "NRestarts": "379",
+        "SubState": "running",
+        "UnitFileState": "enabled"
+      },
+      "service_before": {
+        "ActiveState": "active",
+        "LoadState": "loaded",
+        "NRestarts": "379",
+        "SubState": "running",
+        "UnitFileState": "enabled"
+      }
+    },
+    "keyless_agent_scrapes": {
+      "gx10_requests": 11,
+      "mac_requests": 11,
+      "pass": true
+    },
+    "mac_cache_native_samples": {
+      "cache_window_seconds": 0.5,
+      "distinct_samples": 6,
+      "latest_intervals_seconds": [
+        0.9340000152587891,
+        0.9389998912811279,
+        1.1700000762939453,
+        0.940000057220459
+      ],
+      "pass": true
+    },
+    "native_agent_history": {
+      "local_b": {
+        "host_cpu_power_watts": {
+          "honesty": "agent-measured",
+          "intervals_ms": [
+            1002,
+            1000,
+            1000,
+            999,
+            1000
+          ],
+          "points": 6,
+          "source": "agent"
+        },
+        "host_gpu_power_watts": {
+          "honesty": "agent-measured",
+          "intervals_ms": [
+            1002,
+            1000,
+            1000,
+            999,
+            1000
+          ],
+          "points": 6,
+          "source": "agent"
+        },
+        "host_package_power_watts": {
+          "honesty": "agent-measured",
+          "intervals_ms": [
+            1002,
+            1000,
+            1000,
+            999,
+            1000
+          ],
+          "points": 6,
+          "source": "agent"
+        }
+      },
+      "pass": true,
+      "remote_a": {
+        "gpu0_memory_total_bytes": {
+          "honesty": null,
+          "points": 0,
+          "source": "agent"
+        },
+        "gpu0_memory_used_bytes": {
+          "honesty": null,
+          "points": 0,
+          "source": "agent"
+        },
+        "gpu0_power_watts": {
+          "honesty": "agent-measured",
+          "intervals_ms": [
+            1002,
+            1000,
+            1000,
+            999,
+            1000
+          ],
+          "points": 6,
+          "source": "agent"
+        },
+        "gpu0_temperature_celsius": {
+          "honesty": "agent-measured",
+          "intervals_ms": [
+            1002,
+            1000,
+            1000,
+            999,
+            1000
+          ],
+          "points": 6,
+          "source": "agent"
+        },
+        "gpu0_utilization_ratio": {
+          "honesty": "agent-measured",
+          "intervals_ms": [
+            1002,
+            1000,
+            1000,
+            999,
+            1000
+          ],
+          "points": 6,
+          "source": "agent"
+        }
+      }
+    },
+    "newest_sample_node_cards": {
+      "local_b_series": 3,
+      "pass": true,
+      "remote_a_series": 3
+    }
+  },
+  "failure": null,
+  "finished_at": "2026-08-23T22:48:52.036879+00:00",
+  "inputs": {
+    "cluster_config_sha256": "495f349e8291da5a2111003338bd5f8c9080debb78797f8e37191beae5250821",
+    "console": {
+      "bytes": 4706608,
+      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "sha256": "9212547bf721d8b352b80106fe6c1302f00e39f240830a528e103531aa00312d"
+    },
+    "controller": {
+      "bytes": 42704,
+      "path": "/Users/you/Code/muser-console/scripts/acceptance_agents.py",
+      "sha256": "c0b7643e7be45387d0be9967a7552bb6282ad36d8ef08902d3646b5889edbd1f"
+    },
+    "edge": {
+      "bytes": 88464,
+      "path": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "sha256": "f2a9a1cfe6aacb173e3640584702cfbab634e6c3372710fa8a1c1dfa6bde0c89"
+    },
+    "engine": {
+      "bytes": 19328144,
+      "path": "/Users/you/Code/muser/target/release/muser",
+      "sha256": "d724f53d0ac99081fe016a96011bacc34d5f5e7ba194a711b772bde5d35147a3"
+    },
+    "engine_source_commit": "006786e84876d2fd53fdd24621f1baf0a14e04a3",
+    "gx_deployment_receipt": {
+      "bytes": 6859,
+      "path": "/data/console-results/v1-campaign-20260823/phase4-gx-deploy-attempt-4/deployment-receipt.json",
+      "sha256": "6f75f46403174ea95fcd60871a2cd3dbc21bf9dab6642b6d639d712722f7fbc7"
+    },
+    "gx_exporter_target_sha256": "0a9972a950b1b0bf94655f84b9cbd71854355ca65f2aa8f7991eb247b231825d",
+    "local_model": {
+      "bytes": 16756681056,
+      "path": "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "sha256": "7e9b74b7c8875e9e265695df9613bf6290f2392e479ce740495a129019c488d8"
+    },
+    "mac_exporter": {
+      "bytes": 1433888,
+      "path": "/Users/you/Code/muser-console/target/release/mac-exporter",
+      "sha256": "c41466e27c901ef99f04886aa4f05bec5eb633846621413c1fffdea219fb521f"
+    },
+    "metallib": {
+      "bytes": 7314848,
+      "path": "/data/receipts/llama-metal-89e0aa6fd362/llama.metallib",
+      "sha256": "c018ab9c01c18bf79a83272d25973a981138bdeec9ac677e63afef07b21ac033"
+    },
+    "remote_model": {
+      "bytes": 19552725248,
+      "path": "/data/models/Muse-Glimmer-30B-RedHatAI-NVFP4-native-d5109a1-v1.gguf",
+      "sha256": "dc9865ef9770324b1b5d7bdebc7fc6b2c9fb125084fe2461b6f5168c552193b1"
+    },
+    "ui_sha256": "d7ad13f6dc1cbab2c84ac784d04514501c5005088c7990329e981dd18364dae2"
+  },
+  "operator_stop": {
+    "mac_exporter_pid": 82839,
+    "required_after_capture": true
+  },
+  "outcome": "passed",
+  "schema": "muser-console.acceptance.phase4.v1",
+  "started_at": "2026-08-23T22:48:10.949103+00:00"
+}

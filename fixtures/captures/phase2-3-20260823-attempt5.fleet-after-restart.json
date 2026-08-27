@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "agents": [],
+      "authority": "127.0.0.1:62680",
+      "default": true,
+      "name": "remote-a"
+    },
+    {
+      "agents": [],
+      "authority": "127.0.0.1:62681",
+      "default": false,
+      "name": "local-b"
+    }
+  ]
+}

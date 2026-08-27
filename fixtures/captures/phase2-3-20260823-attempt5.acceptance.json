@@ -1,0 +1,196 @@
+{
+  "accelerator_cell": "muser-console-phase2-3-live-attempt-5",
+  "checks": {
+    "dead_b_isolated": {
+      "a_snapshot_status": 200,
+      "a_sse_frames": 15,
+      "a_sse_max_interval_seconds": 1.000781,
+      "b_error_byte_exact": true,
+      "b_exit_status": -9,
+      "b_snapshot_status": 502,
+      "pass": true
+    },
+    "engine_remote_receipt_visible": {
+      "disagg_prefills": 4,
+      "pass": true,
+      "transfer_count": 4
+    },
+    "genuine_completions": {
+      "local_b": 4,
+      "pass": true,
+      "remote_a": 4
+    },
+    "genuine_session_lifecycles": {
+      "local_b_across_restart": 2,
+      "pass": true,
+      "remote_a": 2
+    },
+    "history_disabled_exact": {
+      "pass": true,
+      "routes": 2
+    },
+    "idle_latches_leave_gaps": {
+      "latch_point_counts_before_after": {
+        "request_decode_tok_s": [
+          6,
+          6
+        ],
+        "transfer_last_bytes_total": [
+          4,
+          4
+        ],
+        "transfer_last_hidden_pct": [
+          4,
+          4
+        ],
+        "transfer_last_throughput_gbps": [
+          4,
+          4
+        ]
+      },
+      "ordinary_point_counts_before_after": {
+        "completion_tokens_total": [
+          55,
+          60
+        ],
+        "decode_tok_s": [
+          55,
+          60
+        ]
+      },
+      "pass": true,
+      "request_decode_max_gap_ms": 24000,
+      "transfer_max_gap_ms": 25000
+    },
+    "local_b_history_has_real_outage_gap": {
+      "decode_tok_s_max_gap_ms": 21000,
+      "pass": true
+    },
+    "real_remote_transfers": {
+      "count": 4,
+      "pass": true,
+      "total_payload_bytes": 435994624
+    },
+    "remote_token_fixture": {
+      "bytes": 9133,
+      "pass": true,
+      "sha256": "a7fd370cc10428e1266246a5a64bc48122a9ff4ae018d8c0d15127ba7288333d"
+    },
+    "rendered_charts_preserve_gaps": {
+      "local_b_outage_chart_breaks": 1,
+      "pass": true,
+      "remote_transfer_chart_breaks": 3
+    },
+    "resident_producer_unchanged": {
+      "after": {
+        "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+        "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+        "producer_socket_ready": true,
+        "restart_count": 0,
+        "started_at": "2026-08-23T10:29:36.727545973Z",
+        "state": "running",
+        "supervisor_running": true
+      },
+      "before": {
+        "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+        "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+        "producer_socket_ready": true,
+        "restart_count": 0,
+        "started_at": "2026-08-23T10:29:36.727545973Z",
+        "state": "running",
+        "supervisor_running": true
+      },
+      "pass": true
+    },
+    "session_event_surface_honest": {
+      "availability": "unavailable",
+      "local_b_events_after_restart": 0,
+      "pass": true,
+      "reason": "the pinned engine emitted no _events for genuine session lifecycles",
+      "remote_a_events": 0
+    },
+    "tile_history_timestamp_equality": {
+      "local_b": {
+        "pass": true,
+        "queue_depth": {
+          "live": 0.0,
+          "stored": 0.0
+        },
+        "queue_honesty": "measured",
+        "queue_source": "metrics",
+        "requests_honesty": "measured",
+        "requests_per_s": {
+          "live": 0.0,
+          "stored": 0.0
+        },
+        "requests_source": "snapshot",
+        "sample_age_ms": 105,
+        "sample_timestamp_ms": 1787519171909,
+        "timestamps_equal": true
+      },
+      "pass": true,
+      "remote_a": {
+        "pass": true,
+        "queue_depth": {
+          "live": 0.0,
+          "stored": 0.0
+        },
+        "queue_honesty": "measured",
+        "queue_source": "metrics",
+        "requests_honesty": "measured",
+        "requests_per_s": {
+          "live": 0.0,
+          "stored": 0.0
+        },
+        "requests_source": "snapshot",
+        "sample_age_ms": 103,
+        "sample_timestamp_ms": 1787519171909,
+        "timestamps_equal": true
+      }
+    },
+    "two_model_engines_live": {
+      "pass": true,
+      "stagger_seconds": 1.25
+    }
+  },
+  "failure": null,
+  "finished_at": "2026-08-23T21:06:18.877643+00:00",
+  "inputs": {
+    "cluster_config_sha256": "495f349e8291da5a2111003338bd5f8c9080debb78797f8e37191beae5250821",
+    "console": {
+      "bytes": 4706384,
+      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "sha256": "576ea8a5e12ceee72d70b5ac270e8e89d60ad2f45293a9bb61801e5a2764e413"
+    },
+    "edge": {
+      "bytes": 88464,
+      "path": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "sha256": "f2a9a1cfe6aacb173e3640584702cfbab634e6c3372710fa8a1c1dfa6bde0c89"
+    },
+    "engine": {
+      "bytes": 17768960,
+      "path": "/Users/you/Code/muser/target/release/muser",
+      "sha256": "aaf0f049dba6bea530ad0dcff13aab82aeb4f3641994231091d49bc66a3b13b2"
+    },
+    "local_model": {
+      "bytes": 16756681056,
+      "path": "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "sha256": "7e9b74b7c8875e9e265695df9613bf6290f2392e479ce740495a129019c488d8"
+    },
+    "metallib": {
+      "bytes": 7314848,
+      "path": "/data/receipts/llama-metal-89e0aa6fd362/llama.metallib",
+      "sha256": "c018ab9c01c18bf79a83272d25973a981138bdeec9ac677e63afef07b21ac033"
+    },
+    "remote_model": {
+      "bytes": 19552725248,
+      "path": "/data/models/Muse-Glimmer-30B-RedHatAI-NVFP4-native-d5109a1-v1.gguf",
+      "sha256": "dc9865ef9770324b1b5d7bdebc7fc6b2c9fb125084fe2461b6f5168c552193b1"
+    },
+    "ui_sha256": "cfbe199a8d57ecb497f5af1dec982309ec86677e66444d877a72c4458d4c29c3"
+  },
+  "outcome": "passed",
+  "remote_task": "/home/producer-node/.muser/lane/gx10/tasks/muser-console-p23-1787529082",
+  "schema": "muser-console.acceptance.phase2-3.v1",
+  "started_at": "2026-08-23T21:04:42.169279+00:00"
+}

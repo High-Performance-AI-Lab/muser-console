@@ -1,0 +1,55 @@
+[package]
+name = "mac-exporter"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+name = "mac_exporter"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mac-exporter"
+path = "src/main.rs"
+
+[features]
+default = []
+# Opt-in only: executes the host's real /usr/bin/powermetrics path. The test
+# accepts honest unprivileged failure, but ordinary CI should not depend on
+# Apple hardware or a platform utility being present.
+real-powermetrics-tests = []
+
+[dependencies]
+# No json feature: the exporter's only JSON is the literal /healthz body, and
+# no serde type crosses its surface.
+axum = { version = "0.8", default-features = false, features = ["http1", "tokio"] }
+# `process` is what runs powermetrics with a bound and a kill-on-drop; on unix
+# it needs only libc/mio/signal-hook-registry, all already in the workspace
+# lock via tokio's signal feature, so it adds no crate to the tree.
+tokio = { version = "1", features = [
+    "rt-multi-thread",
+    "macros",
+    "net",
+    "time",
+    "signal",
+    "process",
+    "sync",
+    "io-util",
+] }
+
+[target.'cfg(unix)'.dependencies]
+# Used for exactly one call: gethostname, for the `host` label.
+libc = "0.2"
+
+[dev-dependencies]
+# Integration tests link only the lib and dev-dependencies, so tokio is named
+# again here; `io-util` is for the tests' hand-rolled HTTP/1.1 client, which
+# keeps the test tree free of an HTTP client dependency.
+tokio = { version = "1", features = [
+    "rt-multi-thread",
+    "macros",
+    "net",
+    "time",
+    "io-util",
+] }

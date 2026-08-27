@@ -1,0 +1,220 @@
+{
+  "accelerator_cell": "muser-console-phase5-tls-multihost-attempt7",
+  "checks": {
+    "console_tls_strict_validation": {
+      "mismatched_ip_san_rejected": true,
+      "pass": true,
+      "platform_untrusted_rejected": true
+    },
+    "cookie_sse_live": {
+      "frames": 16,
+      "max_interval_ms": 1001.911,
+      "pass": true
+    },
+    "engine_tls_strict_validation": {
+      "mismatched_ip_san_rejected": true,
+      "pass": true,
+      "platform_untrusted_rejected": true,
+      "valid_status": 200
+    },
+    "ephemeral_pki": {
+      "console_cert_sha256": "78dfac5da0ad5268b173785485ee696b0af7804d1137b8fd2d66cdddb9a5a0dc",
+      "engine_cert_sha256": "c4f8a2e9bd269025620ab413388b01f10b5eae8f187ed032f7d491701c131a86",
+      "keys_recorded": false,
+      "outside_repository": true,
+      "pass": true
+    },
+    "event_merge_structural_contract": {
+      "classification": "structural test stimulus; not a measurement",
+      "deduplicated": true,
+      "newest_first": true,
+      "no_missing_defaults": true,
+      "order": [
+        "b:b1",
+        "a:same",
+        "b:same",
+        "a:a2"
+      ],
+      "pass": true,
+      "restarted_source_carries_nothing": true,
+      "tie_source_stable": true,
+      "unparseable_last": true
+    },
+    "https_browser_eventsource_fresh": {
+      "max_frame_age_ms": 100,
+      "pass": true,
+      "samples": 22,
+      "transport": {
+        "cookie_session": true,
+        "event_source_open": true,
+        "navigation_protocol": "h2",
+        "poll_fallback_active": false
+      }
+    },
+    "https_session_contract": {
+      "cookie_attributes": {
+        "HttpOnly": true,
+        "Max-Age=3600": true,
+        "SameSite=Strict": true,
+        "Secure": true
+      },
+      "cookie_mutation_without_csrf_status": 403,
+      "expires_in": 3600,
+      "missing_origin_status": 403,
+      "pass": true,
+      "remote_bearer_api_status": 401,
+      "status": 200
+    },
+    "live_event_view_honesty": {
+      "disconnected_marked": true,
+      "engine_event_availability": "unavailable",
+      "invented_connectivity_events": false,
+      "other_source_during_down_status": 200,
+      "pass": true,
+      "restart_marked_live": true,
+      "source_after_restart_status": 200,
+      "source_down_status": 502
+    },
+    "mixed_live_engines": {
+      "engine_a_health": {
+        "accelerator_in_use": true,
+        "degraded": false,
+        "ok": true
+      },
+      "engine_a_transport": "https-non-loopback",
+      "engine_b_health": {
+        "accelerator_in_use": true,
+        "degraded": false,
+        "ok": true
+      },
+      "engine_b_transport": "http-literal-loopback",
+      "pass": true,
+      "stagger_seconds": 1.25
+    },
+    "mixed_topology_and_trust_isolation": {
+      "healthy_statuses_after_failed_handshakes": [
+        200,
+        200
+      ],
+      "pass": true,
+      "routes": {
+        "loopback-b": {
+          "body_sha256": "c73a03c44566c33f90ecf05aa7f9286fd735e4c9948e44cdb6325b68a05be581",
+          "error_type": null,
+          "expected_status": 200,
+          "status": 200
+        },
+        "mismatch-a": {
+          "body_sha256": "fe8afde91a381301b53e572a35e3e5417ec6a0d1bd74c5607caa4bbc9cf127e0",
+          "error_type": "upstream_unreachable",
+          "expected_status": 502,
+          "status": 502
+        },
+        "other-ca-a": {
+          "body_sha256": "4d3460ea354c9221577d9bbff05297e8a42463dc481b6be1615addb8604debbe",
+          "error_type": "upstream_unreachable",
+          "expected_status": 502,
+          "status": 502
+        },
+        "platform-a": {
+          "body_sha256": "1550b262fca0d77e4e96c1a34a8b974ae746d0effe2887637ecfa65ab8a038f0",
+          "error_type": "upstream_unreachable",
+          "expected_status": 502,
+          "status": 502
+        },
+        "secure-a": {
+          "body_sha256": "0b3a223067a66c5baa6e916098b0321dfeac5a40170f290371f978f3e272e6b4",
+          "error_type": null,
+          "expected_status": 200,
+          "status": 200
+        }
+      }
+    },
+    "no_csp_v1": {
+      "decision": "retained: vendored dashboard remains inline and dependency-free",
+      "pass": true,
+      "post_v1": true
+    },
+    "ticket_only_wss_live": {
+      "pass": true,
+      "ticketed": {
+        "bytes": 2763,
+        "hello": {
+          "schema": "muser.telemetry.v2",
+          "type": "hello"
+        },
+        "messages": 2,
+        "ok": true,
+        "seq": 0,
+        "type": "snapshot"
+      },
+      "without_ticket": {
+        "rejected": true
+      }
+    },
+    "unsafe_configurations_rejected": {
+      "cases": {
+        "forbidden_remote_plaintext": {
+          "classification_matched": true,
+          "exit_code": 1,
+          "rejected": true
+        },
+        "missing_pair": {
+          "classification_matched": true,
+          "exit_code": 1,
+          "rejected": true
+        },
+        "wrong_key_mode": {
+          "classification_matched": true,
+          "exit_code": 1,
+          "rejected": true
+        }
+      },
+      "pass": true
+    }
+  },
+  "failure": null,
+  "finished_at": "2026-08-24T00:01:18.872793+00:00",
+  "inputs": {
+    "console": {
+      "bytes": 7525872,
+      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "sha256": "005e689bc3262342cbc8e78a2333a200239afbdc22acb15cab13fe44e2a49d0e"
+    },
+    "edge": {
+      "bytes": 88464,
+      "path": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "sha256": "f2a9a1cfe6aacb173e3640584702cfbab634e6c3372710fa8a1c1dfa6bde0c89"
+    },
+    "engine": {
+      "bytes": 19346336,
+      "path": "/Users/you/Code/muser/target/release/muser",
+      "sha256": "8dae9ccb1b459c1e80d3bb972d9136d3a96e3159ed50798464006b039a1e5f1e"
+    },
+    "engine_source_commit": "d7a2cee6f95bc586a1d21da04dcf8e2eef60cc9a",
+    "lan_ip": "192.0.2.113",
+    "metallib": {
+      "bytes": 7314848,
+      "path": "/data/receipts/llama-metal-89e0aa6fd362/llama.metallib",
+      "sha256": "c018ab9c01c18bf79a83272d25973a981138bdeec9ac677e63afef07b21ac033"
+    },
+    "model_a": {
+      "bytes": 16756681056,
+      "path": "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "sha256": "7e9b74b7c8875e9e265695df9613bf6290f2392e479ce740495a129019c488d8"
+    },
+    "model_b": {
+      "bytes": 16756681056,
+      "path": "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "sha256": "7e9b74b7c8875e9e265695df9613bf6290f2392e479ce740495a129019c488d8"
+    },
+    "ui_sha256": "63a232b40ae73d97e9d62204bf0829eb37a28bd70df0b387765e90ddf5d09b13"
+  },
+  "outcome": "passed",
+  "post_v1": [
+    "persisted event history",
+    "CSP reevaluation"
+  ],
+  "schema": "muser-console.acceptance.phase5.v1",
+  "started_at": "2026-08-24T00:00:02.533107+00:00"
+}

@@ -1,0 +1,38 @@
+{
+  "local-b": [
+    {
+      "create_body_sha256": "ade3421b17acb9c91044c63f45603c0fc5a347990955fa357651b41b233d375e",
+      "create_status": 201,
+      "delete_status": 204,
+      "get_body_sha256": "ade3421b17acb9c91044c63f45603c0fc5a347990955fa357651b41b233d375e",
+      "get_status": 200,
+      "session_id": "p23-b-1787529082-pre"
+    },
+    {
+      "create_body_sha256": "81d72884b981548c71847e1938c4723a1f1019ae03281d3b6cb36c2cc0baf712",
+      "create_status": 201,
+      "delete_status": 204,
+      "get_body_sha256": "81d72884b981548c71847e1938c4723a1f1019ae03281d3b6cb36c2cc0baf712",
+      "get_status": 200,
+      "session_id": "p23-b-1787529082-post"
+    }
+  ],
+  "remote-a": [
+    {
+      "create_body_sha256": "1df6b106e7f7a3f9925d38184764318f7b6068301d51fcfc89adb5c3ad5a3540",
+      "create_status": 201,
+      "delete_status": 204,
+      "get_body_sha256": "1df6b106e7f7a3f9925d38184764318f7b6068301d51fcfc89adb5c3ad5a3540",
+      "get_status": 200,
+      "session_id": "p23-a-1787529082-pre"
+    },
+    {
+      "create_body_sha256": "2b85bbacbc1ebaacc655d5cc83bf0152c5ff972d003f40789a25a84ca20cf9a5",
+      "create_status": 201,
+      "delete_status": 204,
+      "get_body_sha256": "2b85bbacbc1ebaacc655d5cc83bf0152c5ff972d003f40789a25a84ca20cf9a5",
+      "get_status": 200,
+      "session_id": "p23-a-1787529082-post"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# HELP muser_agent_up 1 when the gx10 agent's NVML source answered this scrape, 0 when it did not; when 0 the exposition carries no other series.
+# TYPE muser_agent_up gauge
+muser_agent_up{agent="gx10"} 1
+# HELP muser_agent_scrape_duration_seconds Wall-clock seconds this scrape spent reading NVML.
+# TYPE muser_agent_scrape_duration_seconds gauge
+muser_agent_scrape_duration_seconds{agent="gx10"} 0.000072816
+# HELP muser_gpu_utilization_ratio Fraction of the last sampling period the GPU was busy, 0..1. NVML reports whole percent via nvmlDeviceGetUtilizationRates; this exporter divides by 100 and does not clamp.
+# TYPE muser_gpu_utilization_ratio gauge
+muser_gpu_utilization_ratio{gpu="0",uuid="GPU-60e8a75d-ae8e-6edd-c48e-e4c7f21bb019",name="NVIDIA GB10"} 0
+# HELP muser_gpu_power_watts Board power draw in watts. NVML reports milliwatts via nvmlDeviceGetPowerUsage; this exporter divides by 1000.
+# TYPE muser_gpu_power_watts gauge
+muser_gpu_power_watts{gpu="0",uuid="GPU-60e8a75d-ae8e-6edd-c48e-e4c7f21bb019",name="NVIDIA GB10"} 7.954
+# HELP muser_gpu_temperature_celsius GPU die temperature in degrees Celsius, from nvmlDeviceGetTemperature with NVML_TEMPERATURE_GPU.
+# TYPE muser_gpu_temperature_celsius gauge
+muser_gpu_temperature_celsius{gpu="0",uuid="GPU-60e8a75d-ae8e-6edd-c48e-e4c7f21bb019",name="NVIDIA GB10"} 40

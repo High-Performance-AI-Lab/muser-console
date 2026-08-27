@@ -1,0 +1,56 @@
+{
+  "gx10": {
+    "devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GB10",
+        "uuid_sha256": "63c0d7c765d3b91306113bed94e404cbbf11768552bc2b7e4de965447c3a68ad"
+      }
+    ],
+    "health_byte_exact": true,
+    "memory_availability": "unavailable",
+    "metrics_bytes": 1329,
+    "metrics_sha256": "13d50cc135714ea79ca1949cf8d1eb2ef144ef1466b4441d71333762533201f5",
+    "series": {
+      "gpu0_memory_total_bytes": null,
+      "gpu0_memory_used_bytes": null,
+      "gpu0_power_watts": 7.954,
+      "gpu0_temperature_celsius": 40.0,
+      "gpu0_utilization_ratio": 0.0
+    }
+  },
+  "gx_deployment": {
+    "attempt": 4,
+    "receipt_sha256": "6f75f46403174ea95fcd60871a2cd3dbc21bf9dab6642b6d639d712722f7fbc7",
+    "target_sha256": "0a9972a950b1b0bf94655f84b9cbd71854355ca65f2aa8f7991eb247b231825d"
+  },
+  "gx_service": {
+    "ActiveState": "active",
+    "LoadState": "loaded",
+    "NRestarts": "379",
+    "SubState": "running",
+    "UnitFileState": "enabled"
+  },
+  "mac": {
+    "health_byte_exact": true,
+    "metrics_bytes": 1810,
+    "metrics_sha256": "e4521ea9a4d90284376c1577467fc1272007ba2578f89c05dfc53e7bce7ba9b0",
+    "sample_age_seconds": 0.144240583,
+    "series": {
+      "host_cpu_power_watts": 1.553,
+      "host_gpu_power_watts": 1.369,
+      "host_package_power_watts": 2.922
+    }
+  },
+  "mac_process": {
+    "binary": {
+      "bytes": 1433888,
+      "path": "/Users/you/Code/muser-console/target/release/mac-exporter",
+      "sha256": "c41466e27c901ef99f04886aa4f05bec5eb633846621413c1fffdea219fb521f"
+    },
+    "exact_command": true,
+    "pid": 82839,
+    "uid": 0,
+    "user": "root"
+  }
+}

@@ -1,0 +1,156 @@
+[
+  {
+    "at": "2026-08-24T00:00:37.258Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 4,
+    "stale": false,
+    "uptime": "00:00:27"
+  },
+  {
+    "at": "2026-08-24T00:00:38.266Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 14,
+    "stale": false,
+    "uptime": "00:00:28"
+  },
+  {
+    "at": "2026-08-24T00:00:39.272Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 20,
+    "stale": false,
+    "uptime": "00:00:29"
+  },
+  {
+    "at": "2026-08-24T00:00:40.273Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 23,
+    "stale": false,
+    "uptime": "00:00:30"
+  },
+  {
+    "at": "2026-08-24T00:00:41.279Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 27,
+    "stale": false,
+    "uptime": "00:00:31"
+  },
+  {
+    "at": "2026-08-24T00:00:42.284Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 32,
+    "stale": false,
+    "uptime": "00:00:32"
+  },
+  {
+    "at": "2026-08-24T00:00:43.289Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 37,
+    "stale": false,
+    "uptime": "00:00:33"
+  },
+  {
+    "at": "2026-08-24T00:00:44.290Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 38,
+    "stale": false,
+    "uptime": "00:00:34"
+  },
+  {
+    "at": "2026-08-24T00:00:45.296Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 44,
+    "stale": false,
+    "uptime": "00:00:35"
+  },
+  {
+    "at": "2026-08-24T00:00:46.301Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 50,
+    "stale": false,
+    "uptime": "00:00:36"
+  },
+  {
+    "at": "2026-08-24T00:00:47.303Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 51,
+    "stale": false,
+    "uptime": "00:00:37"
+  },
+  {
+    "at": "2026-08-24T00:00:48.306Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 54,
+    "stale": false,
+    "uptime": "00:00:38"
+  },
+  {
+    "at": "2026-08-24T00:00:49.308Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 56,
+    "stale": false,
+    "uptime": "00:00:39"
+  },
+  {
+    "at": "2026-08-24T00:00:50.314Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 63,
+    "stale": false,
+    "uptime": "00:00:40"
+  },
+  {
+    "at": "2026-08-24T00:00:51.319Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 68,
+    "stale": false,
+    "uptime": "00:00:41"
+  },
+  {
+    "at": "2026-08-24T00:00:52.325Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 74,
+    "stale": false,
+    "uptime": "00:00:42"
+  },
+  {
+    "at": "2026-08-24T00:00:53.330Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 78,
+    "stale": false,
+    "uptime": "00:00:43"
+  },
+  {
+    "at": "2026-08-24T00:00:54.331Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 79,
+    "stale": false,
+    "uptime": "00:00:44"
+  },
+  {
+    "at": "2026-08-24T00:00:55.335Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 84,
+    "stale": false,
+    "uptime": "00:00:45"
+  },
+  {
+    "at": "2026-08-24T00:00:56.340Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 88,
+    "stale": false,
+    "uptime": "00:00:46"
+  },
+  {
+    "at": "2026-08-24T00:00:57.345Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 93,
+    "stale": false,
+    "uptime": "00:00:47"
+  },
+  {
+    "at": "2026-08-24T00:00:58.350Z",
+    "badge": "Live Telemetry",
+    "last_frame_age_ms": 100,
+    "stale": false,
+    "uptime": "00:00:48"
+  }
+]

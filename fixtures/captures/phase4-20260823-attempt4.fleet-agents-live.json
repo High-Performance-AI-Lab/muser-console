@@ -1,0 +1,28 @@
+{
+  "instances": [
+    {
+      "agents": [
+        {
+          "kind": "gx10",
+          "name": "gx-agent",
+          "state": "live"
+        }
+      ],
+      "authority": "127.0.0.1:51739",
+      "default": true,
+      "name": "remote-a"
+    },
+    {
+      "agents": [
+        {
+          "kind": "mac",
+          "name": "mac-agent",
+          "state": "live"
+        }
+      ],
+      "authority": "127.0.0.1:51740",
+      "default": false,
+      "name": "local-b"
+    }
+  ]
+}

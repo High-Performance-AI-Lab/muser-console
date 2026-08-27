@@ -1,0 +1,62 @@
+{
+  "schema": "muser-console.gx10-package-smoke.v1",
+  "captured_at": "2026-08-24T00:19:59.201542+00:00",
+  "pass": true,
+  "host": "producer-node",
+  "container": "muser-redhat-native-f1-593b96a",
+  "target": "/usr/local/bin/gx10-exporter",
+  "extraction": "docker cp from the existing target before packaging; no remote write",
+  "sha256": "0a9972a950b1b0bf94655f84b9cbd71854355ca65f2aa8f7991eb247b231825d",
+  "bytes": 1532848,
+  "architecture": "aarch64-linux-gnu",
+  "file": "ELF 64-bit LSB pie executable, ARM aarch64, dynamically linked, interpreter /lib/ld-linux-aarch64.so.1",
+  "dynamic_linkage_ok": true,
+  "dynamic_linkage": [
+    "libgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1",
+    "libm.so.6 => /lib/aarch64-linux-gnu/libm.so.6",
+    "libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6",
+    "/lib/ld-linux-aarch64.so.1"
+  ],
+  "health_ok": true,
+  "health_byte_exact": true,
+  "real_nvml": true,
+  "metrics_bytes": 1328,
+  "metrics_sha256": "dee39836f7543b7ca5b05a4909c66f5a189b399443f7b27be2d696f35c4134fd",
+  "device": {
+    "index": "gpu0",
+    "name": "NVIDIA GB10",
+    "uuid_sha256": "63c0d7c765d3b91306113bed94e404cbbf11768552bc2b7e4de965447c3a68ad",
+    "utilization_ratio": 0.0,
+    "power_watts": 8.88,
+    "temperature_celsius": 50.0,
+    "memory_availability": "unavailable"
+  },
+  "source": {
+    "last_changed_commit": "ffcf48059ef3b80d198e31e683efd58c3004836e",
+    "current_tree_sha1": "c2f82b3d3385e2da4aa05082c7cabcf62e74ea35",
+    "unchanged_through_package_commit": true
+  },
+  "node_before_package": {
+    "architecture": "aarch64",
+    "container_id": "767de98ee7a7786588f53f4b0aa2d8f92f32fcf719b552a82db60b84c8893b49",
+    "image_id": "sha256:578888b29e42138a0821b68f94d952a4acc958660232e53d3ebff3ae9d933750",
+    "started_at": "2026-08-24T00:16:12.528190386Z",
+    "restart_count": 0,
+    "network_mode": "host",
+    "state": "running",
+    "supervisor_running": true,
+    "producer_socket_ready": true,
+    "gpu_lock_held": true,
+    "nvml_device_count": 1,
+    "port_9707_listener_count": 1,
+    "service": {
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "enabled",
+      "NRestarts": "664"
+    },
+    "service_unit_sha256": "6adda92eb2756a0680afebf068613c476e05d878091dd46b44ab882f4816b06f"
+  },
+  "external_state_note": "An independently admitted wizard quiesced and restored the resident container before this receipt; packaging did not control or overlap that work."
+}

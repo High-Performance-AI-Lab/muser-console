@@ -1,0 +1,23 @@
+muser-console notices
+=====================
+
+Original muser-console code is Copyright (c) 2026 muser-console contributors
+and is available under either the Apache License, Version 2.0, or the MIT
+License.
+
+`ui/muser-dashboard.html` and `schema/metrics-schema.json` were imported from
+Muser. Muser is Copyright (c) 2026 Muser contributors and is available under
+either the Apache License, Version 2.0, or the MIT License. Exact source
+commits and blob hashes, including the console-owned dashboard overlay, are
+recorded in `PROVENANCE`.
+
+The binaries dynamically or statically incorporate Rust dependencies named in
+the locked Cargo graph. Their authors retain their copyrights and their
+declared license terms continue to apply. A release bundle must carry this
+NOTICE, both top-level license texts, Cargo.lock, and the source repository URL
+needed to recover the exact dependency graph.
+
+Model weights, Metal libraries, engine binaries, telemetry databases, keys,
+certificates, and acceptance PKI are not part of the muser-console release
+bundle. muser-console is independent and is not affiliated with, sponsored
+by, or endorsed by Meta or the Muse model authors.

@@ -1,0 +1,66 @@
+{
+  "binaries": {
+    "console": {
+      "bytes": 7526224,
+      "file": "Mach-O 64-bit executable arm64",
+      "sha256": "062f1a8c924423460da0bda4a94d9fabf3a4c088b77178b062a29a9f170a5019"
+    },
+    "gx": {
+      "bytes": 1532848,
+      "file": "ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=d1a9d6c0f7dff2567e435bbca533221465d677ed, for GNU/Linux 3.7.0, not stripped",
+      "sha256": "0a9972a950b1b0bf94655f84b9cbd71854355ca65f2aa8f7991eb247b231825d"
+    },
+    "mac": {
+      "bytes": 2160688,
+      "file": "Mach-O 64-bit executable arm64",
+      "sha256": "704a644e276395d76deba7d74c3860d68e07497cf603168c7a5733ed4e424eb8"
+    }
+  },
+  "bundle": {
+    "bytes": 5054441,
+    "path": "muser-console-v0.1.0-aarch64.tar.gz",
+    "sha256": "9a0a1731457f9baf99fdc8cd3b1d75432cbb9699af98120abe9cc874cd02eefe"
+  },
+  "created_at": "2026-08-24T00:20:33.850797+00:00",
+  "excluded_secrets_and_measurement_databases": true,
+  "gx_receipt_sha256": "4c51fc8f63289b6c263c02784546d36aa77b21e3eb64bc2007820136ea8d8259",
+  "public_release_created": false,
+  "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11)",
+  "schema": "muser-console.release-bundle.v1",
+  "signed": false,
+  "smoke": {
+    "console": {
+      "health": {
+        "body": {
+          "ok": true
+        },
+        "status": 200
+      },
+      "pass": true,
+      "transport": "loopback-http"
+    },
+    "gx_agent": {
+      "health_ok": true,
+      "pass": true,
+      "real_nvml": true,
+      "receipt_schema": "muser-console.gx10-package-smoke.v1"
+    },
+    "mac_agent": {
+      "health": {
+        "body": {
+          "ok": true
+        },
+        "status": 200
+      },
+      "pass": true,
+      "powermetrics_required_for_health": false
+    }
+  },
+  "source": {
+    "bytes": 3633747,
+    "path": "muser-console-v0.1.0-source.tar.gz",
+    "sha256": "42b86ad311b50f4ec6bb5f61afc8da60674c55c950ab056f8f2f385b7982b360"
+  },
+  "source_commit": "187d8722e7afd752bca899b5cf2c1aaeb256070c",
+  "version": "0.1.0"
+}
