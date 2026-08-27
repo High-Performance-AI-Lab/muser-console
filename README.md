@@ -8,6 +8,12 @@ muser-console shows live engine telemetry, fleet health, cache behavior,
 sessions, events, and rolling history. It never turns missing measurements
 into zeroes or demo data: unavailable data stays visibly unavailable.
 
+![The muser-console fleet view: one live engine decoding Muse Glimmer-30B, an enrolling prefill node, and honesty tags on every number](assets/console-fleet.png)
+
+*A live capture: one Mac engine mid-decode, a prefill node enrolling, and
+measurements labeled for exactly what they are — values nothing reported
+show a dash, never a zero.*
+
 ## What you get
 
 - **Fleet:** engine instances, topology, prefill nodes, and optional hardware
