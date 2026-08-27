@@ -23,19 +23,6 @@
   --good:#0f766e; --warn:#c2410c; --crit:#cf222e;
   --mark-off:rgba(1,4,9,.10);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#0d1117; --grain:#010409;
-    --surface:#161b22; --surface-2:#1c2128; --raised:#21262d;
-    --border:rgba(240,246,252,.10); --border-strong:rgba(240,246,252,.18);
-    --ink:#f0f6fc; --ink-dim:#c9d1d9; --ink-mute:#8b949e;
-    --glimmer:#3fb9aa; --glimmer-soft:rgba(63,185,170,.12);
-    --oxide:#ea580c; --oxide-soft:rgba(234,88,12,.14);
-    --cat-teal:#3fb9aa; --cat-violet:#62a0ff; --cat-amber:#6e7681; --cat-rose:#545d68;
-    --good:#3fb9aa; --warn:#ea580c; --crit:#f85149;
-    --mark-off:rgba(240,246,252,.08);
-  }
-}
 :root[data-theme="dark"]{
   --ground:#0d1117; --grain:#010409;
   --surface:#161b22; --surface-2:#1c2128; --raised:#21262d;
@@ -1784,8 +1771,7 @@ const pctx=pipe.getContext("2d");
 let pdpr=Math.min(2,devicePixelRatio||1);
 function sizePipe(){ const r=pipe.getBoundingClientRect(); pipe.width=Math.max(1,r.width*pdpr); pipe.height=Math.max(1,r.height*pdpr); }
 sizePipe();
-function themeKey(){ const a=document.documentElement.getAttribute("data-theme");
-  return a || (matchMedia("(prefers-color-scheme: dark)").matches ? "auto-dark" : "auto-light"); }
+function themeKey(){ return document.documentElement.getAttribute("data-theme") || "light"; }
 const _cssVarCache = new Map();
 function cssVar(n){
   const key=themeKey()+"|"+n;
@@ -2296,12 +2282,10 @@ addEventListener("pageshow",event=>{
 });
 
 const root=document.documentElement, tbtn=$("#themeBtn");
-function currentDark(){ const a=root.getAttribute("data-theme");
-  return a? a==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+function currentDark(){ return root.getAttribute("data-theme")==="dark"; }
 function setTheme(){ tbtn.textContent=currentDark()?"◐":"◑"; }
 tbtn.addEventListener("click",()=>{ root.setAttribute("data-theme", currentDark()?"light":"dark"); setTheme();
   _colCache.clear(); sizePipe(); spIn.size(); spOut.size(); drawAllHist(); });
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ()=>{ setTheme(); drawAllHist(); });
 setTheme();
 
 /* ============================================================= ADD-NODE WIZARD */
