@@ -272,12 +272,16 @@ is an unknown series (400), like any other name the catalog does not hold.
 {"series":{"decode_tok_s":{
    "kind":"gauge","source":"metrics",
    "points":[[1755300000000,107.91612745927448]],
-   "honesty":"measured"}}}
+   "honesty":"measured","honesty_tags":["measured"]}}}
 ```
 
-`points` are `[unix_ms, value]` pairs, oldest first. `honesty` is the tag
-most recently stored for that series in the range, or `null` when the range
-holds no rows — a series with no data makes no honesty claim.
+`points` are `[unix_ms, value]` pairs, oldest first. `honesty_tags` lists
+every distinct honesty tag the range actually holds, oldest first; it is
+empty when the range holds no rows — a series with no data makes no honesty
+claim. `honesty` is that tag when there is exactly one, and `null` otherwise
+(no rows, or a range whose provenance changed part-way through). A caller
+that badges a whole window with one chip must use `honesty`, so a mixed
+window gets no chip rather than a claim that was true of only part of it.
 
 Points are **only** what the store holds. Missing ticks are missing points:
 nothing is interpolated, carried forward, or zero-filled, and an empty

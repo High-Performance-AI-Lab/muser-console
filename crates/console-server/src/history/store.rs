@@ -68,9 +68,27 @@ pub struct Query {
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct SeriesData {
     pub points: Vec<(i64, f64)>,
-    /// Honesty tag of the newest row in range. `None` when the range holds
-    /// no rows — the store makes no claim about data it does not have.
-    pub honesty: Option<Honesty>,
+    /// Every distinct honesty tag the range actually holds, in the order the
+    /// rows first carried it. Empty when the range holds no rows — the store
+    /// makes no claim about data it does not have.
+    ///
+    /// A window is not required to be uniform: a series can be `target` for
+    /// the first half of an hour and `measured` for the second. Reporting
+    /// only the newest row's tag let a caller badge the whole window with a
+    /// claim that was true of one point in it, so the whole set travels and
+    /// the caller decides what a mixed window may be labelled.
+    pub honesty: Vec<Honesty>,
+}
+
+impl SeriesData {
+    /// The one tag that speaks for the whole range, or `None` when the range
+    /// is empty or holds more than one — no single chip may cover two truths.
+    pub fn sole_honesty(&self) -> Option<Honesty> {
+        match self.honesty.as_slice() {
+            [only] => Some(*only),
+            _ => None,
+        }
+    }
 }
 
 pub type QueryResult = Vec<(&'static str, SeriesData)>;
@@ -332,13 +350,18 @@ fn read_range(connection: &Connection, request: &Query) -> Result<QueryResult, S
             },
         )?;
         let mut points: Vec<(i64, f64)> = Vec::new();
-        let mut honesty: Option<Honesty> = None;
+        let mut honesty: Vec<Honesty> = Vec::new();
         for row in rows {
             let (ts, value, tag) = row?;
             points.push((ts, value));
-            // Rows arrive oldest-first, so the last one wins: the tag most
-            // recently stored for this series.
-            honesty = Honesty::from_tag(&tag);
+            // Every tag the window holds, deduplicated, oldest first. A range
+            // that changed provenance mid-way says so instead of presenting
+            // its newest row's tag as the truth about all of it.
+            if let Some(tag) = Honesty::from_tag(&tag) {
+                if !honesty.contains(&tag) {
+                    honesty.push(tag);
+                }
+            }
         }
         if request.step_s > NATIVE_STEP_S {
             points = bucket(&points, request.step_s * 1000, kind);
@@ -627,7 +650,67 @@ mod tests {
         )
         .expect("query");
         assert_eq!(result[0].1.points, [(1_000, 1.5), (2_000, 2.5)]);
-        assert_eq!(result[0].1.honesty, Some(Honesty::Measured));
+        assert_eq!(result[0].1.honesty, [Honesty::Measured]);
+        assert_eq!(result[0].1.sole_honesty(), Some(Honesty::Measured));
+    }
+
+    #[test]
+    fn a_range_that_changed_provenance_reports_every_tag_it_holds() {
+        let connection = memory_store();
+        // Same series, two planes: an exporter measured it early, the engine
+        // measured it later. One tag for the pair would be a claim about
+        // rows that never carried it.
+        write_batch(
+            &connection,
+            &[
+                Sample {
+                    instance: "gx".to_owned(),
+                    series: "decode_tok_s",
+                    ts_ms: 1_000,
+                    value: 1.5,
+                    source: Source::Agent,
+                    honesty: Honesty::AgentMeasured,
+                },
+                Sample {
+                    instance: "gx".to_owned(),
+                    series: "decode_tok_s",
+                    ts_ms: 2_000,
+                    value: 2.5,
+                    source: Source::Metrics,
+                    honesty: Honesty::Measured,
+                },
+                Sample {
+                    instance: "gx".to_owned(),
+                    series: "decode_tok_s",
+                    ts_ms: 3_000,
+                    value: 3.5,
+                    source: Source::Metrics,
+                    honesty: Honesty::Measured,
+                },
+            ],
+        )
+        .expect("write");
+        let result = read_range(
+            &connection,
+            &Query {
+                instance: "gx".to_owned(),
+                series: vec!["decode_tok_s"],
+                from_ms: 0,
+                to_ms: 10_000,
+                step_s: 1,
+            },
+        )
+        .expect("query");
+        assert_eq!(
+            result[0].1.honesty,
+            [Honesty::AgentMeasured, Honesty::Measured],
+            "distinct tags, oldest first, each listed once"
+        );
+        assert_eq!(
+            result[0].1.sole_honesty(),
+            None,
+            "a mixed window has no single tag to badge it with"
+        );
     }
 
     #[test]
@@ -675,10 +758,11 @@ mod tests {
         )
         .expect("query");
         assert!(result[0].1.points.is_empty());
-        assert_eq!(
-            result[0].1.honesty, None,
+        assert!(
+            result[0].1.honesty.is_empty(),
             "no rows means no honesty claim, not a default tag"
         );
+        assert_eq!(result[0].1.sole_honesty(), None);
     }
 
     #[test]

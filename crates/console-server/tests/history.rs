@@ -348,6 +348,13 @@ async fn live_tile_and_newest_history_point_agree() {
     assert_eq!(field(&body, "decode_tok_s", "kind"), "gauge");
     assert_eq!(field(&body, "requests_per_s", "source"), "snapshot");
     assert_eq!(field(&body, "requests_per_s", "honesty"), "measured");
+    // The whole tag set rides along, so a caller can tell a uniform window
+    // from one whose provenance changed part-way through. `honesty` is the
+    // sole tag only when there is exactly one.
+    assert_eq!(
+        field(&body, "decode_tok_s", "honesty_tags"),
+        &serde_json::json!(["measured"])
+    );
 
     // The sampler injects the instance's engine key server-side, exactly as
     // the proxy does; the console key never leaves the console.
@@ -403,6 +410,11 @@ async fn mock_tagged_fields_yield_no_stored_series() {
         field(&body, "wire_ingress_gbps", "honesty"),
         &serde_json::Value::Null,
         "a series with no rows makes no honesty claim"
+    );
+    assert_eq!(
+        field(&body, "wire_ingress_gbps", "honesty_tags"),
+        &serde_json::json!([]),
+        "and holds no tags at all, rather than a default one"
     );
 
     // Sample for a while longer: a mock field must never sneak in later.

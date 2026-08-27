@@ -74,6 +74,7 @@ pub async fn query(State(state): State<AppState>, request: Request) -> Response 
             .iter()
             .map(|(ts, value)| serde_json::json!([ts, value]))
             .collect();
+        let honesty_tags: Vec<&'static str> = data.honesty.iter().map(|tag| tag.as_str()).collect();
         series.insert(
             name.to_owned(),
             serde_json::json!({
@@ -81,8 +82,13 @@ pub async fn query(State(state): State<AppState>, request: Request) -> Response 
                 "source": entry.map(|series| series.source.as_str()),
                 "points": points,
                 // No rows in range means no honesty claim: null, never a
-                // default tag that would dress a gap up as measured.
-                "honesty": data.honesty.map(|honesty| honesty.as_str()),
+                // default tag that would dress a gap up as measured. A range
+                // whose rows disagree gets null here too — the whole set is
+                // in `honesty_tags`, and one chip must not speak for two
+                // different truths.
+                "honesty": data.sole_honesty().map(|honesty| honesty.as_str()),
+                // Every distinct tag the range holds, oldest first.
+                "honesty_tags": honesty_tags,
             }),
         );
     }

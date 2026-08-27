@@ -131,7 +131,7 @@ field".
 It is hand-written because `powermetrics` refuses to run without root and this
 project does not escalate privileges to manufacture a fixture. If an operator
 captures real output under the accelerator discipline, it lands beside this file
-with a PROVENANCE entry — and this file stays exactly what it is.
+recording where it came from — and this file stays exactly what it is.
 
 The failure path, by contrast, *is* tested against reality:
 `tests/server.rs::the_real_powermetrics_path_reports_what_it_actually_got` runs

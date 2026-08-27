@@ -44,9 +44,17 @@ fn dashboard_keeps_demo_states_honest_and_comprehensible() {
     // An idle snapshot retains both the last structural bytes and their
     // denominator. Keeping only the numerator made both layer bars clamp to
     // 100% as soon as the request-scoped session disappeared.
-    assert!(dashboard.contains("total: k.total_bytes||"));
+    assert!(dashboard.contains("total: reportedNothing(k.total_bytes)"));
     assert!(dashboard.contains("window.__kvClassLast && window.__kvClassLast.total"));
     assert!(dashboard.contains("last session · idle"));
+
+    // Absence and zero are different readings. `||0` collapsed them, and the
+    // panels printed "0 tok · 0 B" for fields nothing had reported.
+    assert!(dashboard.contains("function reportedNothing(v)"));
+    assert!(dashboard.contains("function fmtOrDash(v, fmtFn)"));
+    assert!(!dashboard.contains("\"0 tok · 0 B\""));
+    // An unreported uptime is a dash, not a process that just started.
+    assert!(dashboard.contains("$(\"#uptime\").textContent = fmtOrDash(snap.uptime_s, fmtClock)"));
 
     // Loopback bearer mode intentionally polls because EventSource cannot
     // carry its in-memory Authorization header. That is a healthy transport,
@@ -56,11 +64,20 @@ fn dashboard_keeps_demo_states_honest_and_comprehensible() {
 
     // The native producer's sentinel remains untouched in telemetry, while
     // the visual surface explains its meaning and does not invent an identity.
-    assert!(dashboard.contains("rawProducer === \"unsolicited-producer\""));
+    assert!(dashboard.contains("producerName === \"unsolicited-producer\""));
     assert!(dashboard.contains("external producer"));
     assert!(dashboard.contains("remote prefill"));
-    assert!(dashboard.contains("managed daemon offline; external producer active"));
+    assert!(dashboard.contains("node service offline; external producer active"));
     assert!(dashboard.contains("Topology — \" + name"));
+
+    // Nothing reported a producer means no producer box: the canvas used to
+    // draw a machine called "gx10-prefill" that nobody had ever mentioned.
+    assert!(!dashboard.contains("gx10-prefill"));
+    assert!(dashboard.contains("const hasReceipt = !!producerName;"));
+
+    // The wordmark carries what the engine reported or says it has nothing.
+    assert!(dashboard.contains("esc(c.model) || \"model unavailable\""));
+    assert!(!dashboard.contains("c.model||\"Muse Glimmer-30B\""));
 
     // Absent speculative decoding is unavailable, not a row of synthetic
     // zero counters.

@@ -7,9 +7,9 @@ License.
 
 `ui/muser-dashboard.html` and `schema/metrics-schema.json` were imported from
 Muser. Muser is Copyright (c) 2026 Muser contributors and is available under
-either the Apache License, Version 2.0, or the MIT License. Exact source
-commits and blob hashes, including the console-owned dashboard overlay, are
-recorded in `PROVENANCE`.
+either the Apache License, Version 2.0, or the MIT License. The dashboard has
+since been extended in this repository; the console-owned changes carry the
+muser-console copyright above under the same dual licence.
 
 The binaries dynamically or statically incorporate Rust dependencies named in
 the locked Cargo graph. Their authors retain their copyrights and their

@@ -3,10 +3,9 @@
 Distilled from `docs/telemetry.md`, `docs/metrics-schema.{md,json}`,
 `docs/one-button-onboarding.md`, `crates/muser-server/src/{axum_httpd,metrics,nodes_api}.rs`,
 and `web/muser-dashboard.html` in the engine repo. The full pin is
-`753c2a5cf6797db82e6c2e9ff77cc4a0a552966b`; its resolution and distance
-from the historical `d4fe7159` and `42e9af6e` pins are in `PROVENANCE`.
-This file is console-side documentation; the engine repo is authoritative
-and read-only.
+`753c2a5cf6797db82e6c2e9ff77cc4a0a552966b`; the historical pins this one
+supersedes are `d4fe7159` and `42e9af6e`. This file is console-side
+documentation; the engine repo is authoritative and read-only.
 
 ## Endpoints the console consumes
 
@@ -169,7 +168,7 @@ resync, and five-tick ping cadence. The new snapshot fields ride those
 existing envelopes; there is no new event type and the proxy must not invent
 one.
 
-## Fixture reality (see PROVENANCE)
+## Fixture reality
 
 The historical qualification artifacts contain
 `RESULT.json → .muser.telemetry_delta`

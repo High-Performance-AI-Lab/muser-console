@@ -109,8 +109,9 @@ with `Ctrl-C`.
 
 ## Open the console from another computer
 
-Network access is supported directly by muser-console. A non-loopback
-listener is HTTPS-only; the server refuses to start remotely with plain HTTP.
+muser-console can be reached from other computers on your network. When it's
+listening on a network address (not just this machine), it requires HTTPS — it
+won't start on a network address over plain HTTP.
 
 | Mode | `listen` | Browser URL | Login |
 |---|---|---|---|
@@ -344,12 +345,11 @@ Useful technical references:
 - [Console API, authentication, TLS, and routing](docs/console-api.md)
 - [Engine telemetry contract](docs/engine-contract.md)
 - [Agent deployment](docs/agent-deployment.md)
-- [Release and distribution layout](docs/distribution.md)
-- [Final v1 audit](docs/final-v1-audit-2026-08-24.md)
-- [Imported-file provenance](PROVENANCE)
+- [OpenTelemetry collector](docs/otel-collector.md)
 
 ## License
 
-muser-console is available under either Apache-2.0 or MIT. See
-[`LICENSE-APACHE`](LICENSE-APACHE), [`LICENSE-MIT`](LICENSE-MIT),
-[`NOTICE`](NOTICE), and [`PROVENANCE`](PROVENANCE).
+muser-console is available under either Apache-2.0 or MIT, at your option.
+The full texts are in [`LICENSE-APACHE`](LICENSE-APACHE) and
+[`LICENSE-MIT`](LICENSE-MIT). [`NOTICE`](NOTICE) records the third-party
+material this repository carries and the terms that came with it.
