@@ -51,11 +51,12 @@ def render() -> Image.Image:
     d.text((x, 352), "Fleet health · cache savings · sessions · gap-preserving history",
            font=font(34), fill=DIM)
 
-    # telemetry strip: alternating accent bars on a baseline
-    bx, base, bw = x, 520, 26
+    # telemetry strip: alternating accent bars on a baseline, scaled to sit
+    # clear of the feature line above (bottom ~394) and the URL below (560)
+    bx, base, bw = x, 530, 26
     for i, h in enumerate(BARS):
         color = ACCENT if i % 3 else ACCENT2
-        d.rectangle([bx, base - h * 3, bx + bw - 6, base], fill=color)
+        d.rectangle([bx, base - h * 2, bx + bw - 6, base], fill=color)
         bx += bw
     d.line([x - 10, base + 6, x + len(BARS) * bw, base + 6], fill=DIM, width=2)
 
