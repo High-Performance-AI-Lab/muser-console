@@ -86,6 +86,42 @@ fn dashboard_keeps_demo_states_honest_and_comprehensible() {
 }
 
 #[test]
+fn dashboard_shows_truthful_native_startup_milestones() {
+    let dashboard = std::fs::read_to_string(common::repo_root().join("ui/muser-dashboard.html"))
+        .expect("ui asset");
+
+    for phase in [
+        "Engine setup",
+        "Load weights",
+        "Init 8K chunks",
+        "Allocate 128K KV",
+        "Warm first request",
+        "Ready",
+    ] {
+        assert!(dashboard.contains(phase), "missing startup phase: {phase}");
+    }
+    assert!(dashboard.contains("raw.data.native_startup"));
+    assert!(dashboard.contains("role=\"progressbar\""));
+    assert!(dashboard.contains("aria-valuemax=\"${value.total}\""));
+    assert!(dashboard.contains("Startup milestones, not a time estimate"));
+    assert!(dashboard.contains("nativeElapsed.textContent=nativeStartupElapsed"));
+}
+
+#[test]
+fn add_node_tracks_same_process_activation_when_the_engine_offers_it() {
+    let dashboard = std::fs::read_to_string(common::repo_root().join("ui/muser-dashboard.html"))
+        .expect("ui asset");
+
+    assert!(dashboard.contains("id=\"wzTarget\""));
+    assert!(!dashboard.contains("id=\"wzHost\""));
+    assert!(!dashboard.contains("id=\"wzUser\""));
+    assert!(dashboard.contains(r#"[...ONBOARDING_STEPS,"activate"]"#));
+    assert!(dashboard.contains("accepted.activates_inference"));
+    assert!(dashboard.contains("run.expectsActivation ? \"activate\" : \"smoke\""));
+    assert!(dashboard.contains("The producer and Mac decoder are ready on the same server"));
+}
+
+#[test]
 fn dashboard_keeps_editorial_copy_out_of_the_work_surface() {
     let dashboard = std::fs::read_to_string(common::repo_root().join("ui/muser-dashboard.html"))
         .expect("ui asset");
@@ -164,7 +200,15 @@ fn dashboard_tabs_are_rationalized_mobile_safe_and_pair_without_markup() {
     assert!(fleet.contains("id=\"fleetCards\""));
     assert!(fleet.contains("id=\"nodes\""));
     let inference = between("id=\"page-inference\"", "id=\"page-activity\"");
-    for id in ["pipe", "ecCache", "kvNope", "tricks"] {
+    for id in [
+        "chatPanel",
+        "chatInput",
+        "chatSend",
+        "pipe",
+        "ecCache",
+        "kvNope",
+        "tricks",
+    ] {
         assert!(inference.contains(&format!("id=\"{id}\"")), "{id}");
     }
     let activity = between("id=\"page-activity\"", "id=\"page-history\"");
@@ -193,6 +237,29 @@ fn dashboard_tabs_are_rationalized_mobile_safe_and_pair_without_markup() {
     assert!(dashboard.contains("event.key===\"ArrowRight\""));
     assert!(dashboard.contains("event.key===\"Enter\" || event.key===\" \""));
     assert!(dashboard.contains("id=\"pairBtn\" type=\"button\" hidden>Pair device</button>"));
+    assert!(dashboard.contains("base+\"/v1/chat/completions\""));
+    assert!(dashboard.contains(
+        "if(typeof delta.reasoning_content===\"string\" && delta.reasoning_content){\n          if(ttftMs==null) ttftMs=performance.now()-startedAt;"
+    ));
+    assert!(dashboard.contains("if(!contentStarted){"));
+    assert!(dashboard.contains(
+        "#chatPanel{block-size:clamp(380px,44vh,430px);block-size:clamp(380px,44dvh,430px);"
+    ));
+    assert!(dashboard.contains(".chatwrap{display:flex;flex:1 1 auto;min-height:0;"));
+    assert!(dashboard.contains(".chatlog{display:flex;flex:1 1 auto;min-height:0;"));
+    assert!(dashboard.contains("overscroll-behavior:contain;scrollbar-gutter:stable"));
+    assert!(!dashboard.contains("max-height:400px"));
+    assert!(dashboard.contains("headers[\"x-csrf-token\"]=dashboardCsrf"));
+    assert!(dashboard
+        .contains("if(dashboardBearer) authHeaders.authorization=\"Bearer \"+dashboardBearer"));
+    assert!(
+        dashboard.contains("else if(dashboardCsrf) authHeaders[\"x-csrf-token\"]=dashboardCsrf")
+    );
+    assert!(!dashboard.contains("const authHeaders = location.protocol===\"https:\""));
+    assert!(dashboard.contains("location.protocol===\"https:\" && fleetInstances"));
+    assert!(!dashboard.contains(
+        "async function restoreDashboardSession(){\n  if(location.protocol!==\"https:\")"
+    ));
 
     let capture = dashboard
         .find("if(location.hash.startsWith(\"#pair=\"))")

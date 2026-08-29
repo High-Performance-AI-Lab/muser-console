@@ -3,12 +3,12 @@
 //! 0600 or stricter, 1..=4096 bytes with at least one non-whitespace byte,
 //! value trimmed of leading/trailing ASCII whitespace.
 
-use std::io::BufReader;
 use std::net::{IpAddr, SocketAddr};
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 use axum::http::HeaderValue;
+use rustls::pki_types::{pem::PemObject, CertificateDer};
 
 #[derive(serde::Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -512,8 +512,7 @@ fn build_client_tls(
     let mut roots = rustls::RootCertStore::empty();
     if let Some(path) = ca_file {
         let pem = read_regular_file_bounded(path, &format!("{label} CA file"), 1024 * 1024)?;
-        let certificates: Result<Vec<_>, _> =
-            rustls_pemfile::certs(&mut BufReader::new(pem.as_slice())).collect();
+        let certificates: Result<Vec<_>, _> = CertificateDer::pem_slice_iter(&pem).collect();
         let certificates = certificates
             .map_err(|error| format!("read {label} CA file {}: {error}", path.display()))?;
         if certificates.is_empty() {

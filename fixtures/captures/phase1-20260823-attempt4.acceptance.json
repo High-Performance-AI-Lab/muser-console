@@ -72,7 +72,7 @@
   "inputs": {
     "console": {
       "bytes": 4706384,
-      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "path": "/opt/muser-console/target/release/muser-console",
       "sha256": "576ea8a5e12ceee72d70b5ac270e8e89d60ad2f45293a9bb61801e5a2764e413"
     },
     "edge": {
@@ -82,7 +82,7 @@
     },
     "engine": {
       "bytes": 17768960,
-      "path": "/Users/you/Code/muser/target/release/muser",
+      "path": "/opt/muser/target/release/muser",
       "sha256": "aaf0f049dba6bea530ad0dcff13aab82aeb4f3641994231091d49bc66a3b13b2"
     },
     "metallib": {

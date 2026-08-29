@@ -14,6 +14,7 @@ documentation; the engine repo is authoritative and read-only.
 | `GET /snapshot` | JSON | management read | bare `MetricsSnapshot`, no envelope |
 | `GET /metrics` | Prometheus text 0.0.4 | management read | measured-only subset, see below |
 | `GET /telemetry` | SSE | management read | 1 Hz, `event: snapshot`, data `{"v":1,"type":"snapshot","seq":N,"t":uptime_s,"data":<snapshot>}`; no retry hint, no comments |
+| `POST /v1/chat/completions` | OpenAI-compatible SSE | inference auth | prompt stream used by the Inference tab; response chunks pass through byte-exact |
 | `GET /stream` | WebSocket | dashboard cookie OR single-use `?ticket=` (30 s, from `POST /v1/ws-tickets`) | hello `{"v":2,"type":"hello","schema":"muser.telemetry.v2","snapshot_interval_s":10,"ping_interval_s":5}`; 1 Hz ticks: full `snapshot` at seq%10==0, else `section_delta` (top-level-key whole-section diff); WS Ping payload `"muser"` at seq%5==0; full snapshot is the only resync |
 | `GET /v1/nodes` | JSON | management read + bind/peer policy | `{nodes:[...], running_job, registry, daemon_probe_timeout_ms}`; probes are parallel and `daemon_alive` is a live, at-most-two-address 1 s TCP probe of port 29591. A healthy/enrolled registry entry older than enrollment v2 is reported as `needs-reenrollment` rather than silently treated as current. |
 | `POST /v1/nodes` | JSON | management write + bind/peer policy | Content-Type must be exactly `application/json`; 202 `{name, progress}`, 409 single-job-slot, 415/400/503 |

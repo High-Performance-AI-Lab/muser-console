@@ -161,6 +161,64 @@ async fn nodes_status_passthrough_including_upstream_401() {
 }
 
 #[tokio::test]
+async fn prompt_stream_reaches_the_selected_engine_without_console_credentials() {
+    let seen = Arc::new(Mutex::new(Vec::new()));
+    let stub_seen = Arc::clone(&seen);
+    let expected = b"data: {\"choices\":[{\"delta\":{\"content\":\"ready\"}}]}\n\ndata: [DONE]\n\n";
+    let stub = Router::new().route(
+        "/v1/chat/completions",
+        post(move |headers: HeaderMap, body: axum::body::Bytes| {
+            let seen = Arc::clone(&stub_seen);
+            async move {
+                seen.lock()
+                    .expect("stub lock")
+                    .push((headers, body.to_vec()));
+                ([(CONTENT_TYPE, "text/event-stream")], expected)
+            }
+        }),
+    );
+    let upstream = common::spawn_router(stub).await;
+    let console = common::spawn_console(upstream).await;
+    let client = common::client();
+    let request_body = br#"{"model":"muse-glimmer-30b","messages":[],"stream":true}"#;
+
+    for path in ["/v1/chat/completions", "/i/primary/v1/chat/completions"] {
+        let (parts, body) = common::request(
+            &client,
+            "POST",
+            console,
+            path,
+            &[
+                ("authorization", &common::bearer(common::CONSOLE_KEY)),
+                ("content-type", "application/json"),
+            ],
+            request_body,
+        )
+        .await;
+        assert_eq!(parts.status, 200, "POST {path}");
+        assert_eq!(
+            parts.headers.get(CONTENT_TYPE).expect("content type"),
+            "text/event-stream"
+        );
+        assert_eq!(body.as_ref(), expected, "SSE bytes must pass through");
+    }
+
+    let seen = seen.lock().expect("seen lock");
+    assert_eq!(seen.len(), 2);
+    for (headers, body) in seen.iter() {
+        assert_eq!(body.as_slice(), request_body);
+        assert_eq!(
+            headers
+                .get("authorization")
+                .and_then(|value| value.to_str().ok()),
+            Some(common::bearer(common::ENGINE_KEY).as_str())
+        );
+        assert!(headers.get("cookie").is_none());
+        assert!(headers.get("x-csrf-token").is_none());
+    }
+}
+
+#[tokio::test]
 async fn unreachable_instance_becomes_502_envelope() {
     // Nothing listens on port 1; connect fails fast.
     let upstream = "127.0.0.1:1".parse().expect("addr");

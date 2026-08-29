@@ -150,6 +150,7 @@ there is no unauthenticated name-enumeration oracle on any route.
 | `/i/{name}/snapshot` | GET | buffered |
 | `/i/{name}/metrics` | GET | buffered |
 | `/i/{name}/telemetry` | GET | streaming (SSE, chunk-by-chunk, no idle timeout) |
+| `/i/{name}/v1/chat/completions` | POST | streaming (OpenAI-compatible SSE) |
 | `/i/{name}/v1/nodes` | GET, POST | buffered |
 | `/i/{name}/v1/nodes/{node}/progress` | GET | streaming (SSE) |
 | `/i/{name}/v1/ws-tickets` | POST | console-terminated mint |
@@ -162,7 +163,7 @@ requires literal `application/json`).
 
 ### Root-anchored compatibility routes
 
-`/snapshot`, `/metrics`, `/telemetry`, `/v1/nodes`,
+`/snapshot`, `/metrics`, `/telemetry`, `/v1/chat/completions`, `/v1/nodes`,
 `/v1/nodes/{node}/progress`, `/v1/ws-tickets`, and `/stream` behave exactly
 as in phase 1, mapped to the **default instance** (the first in config).
 The imported dashboard boots against these before the fleet listing loads,

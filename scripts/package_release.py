@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and smoke-test the private v1 release bundle.
+"""Build and smoke-test the public v1 release bundle.
 
 The caller supplies the already-verified ARM64 Linux GX binary plus its
 sanitized remote smoke receipt. This script packages exact bytes; it never
@@ -300,6 +300,7 @@ def main() -> int:
         (REPO / "ui/muser-dashboard.html", "ui/muser-dashboard.html"),
         (REPO / "examples/config.toml", "examples/config.toml"),
         (REPO / "README.md", "README.md"),
+        (REPO / "CHANGELOG.md", "CHANGELOG.md"),
         (REPO / "PROVENANCE", "PROVENANCE"),
         (REPO / "Cargo.toml", "Cargo.toml"),
         (REPO / "Cargo.lock", "Cargo.lock"),

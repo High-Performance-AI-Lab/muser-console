@@ -178,7 +178,7 @@
   "inputs": {
     "console": {
       "bytes": 7525872,
-      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "path": "/opt/muser-console/target/release/muser-console",
       "sha256": "005e689bc3262342cbc8e78a2333a200239afbdc22acb15cab13fe44e2a49d0e"
     },
     "edge": {
@@ -188,7 +188,7 @@
     },
     "engine": {
       "bytes": 19346336,
-      "path": "/Users/you/Code/muser/target/release/muser",
+      "path": "/opt/muser/target/release/muser",
       "sha256": "8dae9ccb1b459c1e80d3bb972d9136d3a96e3159ed50798464006b039a1e5f1e"
     },
     "engine_source_commit": "d7a2cee6f95bc586a1d21da04dcf8e2eef60cc9a",

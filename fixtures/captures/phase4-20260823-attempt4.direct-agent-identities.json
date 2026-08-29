@@ -45,7 +45,7 @@
   "mac_process": {
     "binary": {
       "bytes": 1433888,
-      "path": "/Users/you/Code/muser-console/target/release/mac-exporter",
+      "path": "/opt/muser-console/target/release/mac-exporter",
       "sha256": "c41466e27c901ef99f04886aa4f05bec5eb633846621413c1fffdea219fb521f"
     },
     "exact_command": true,

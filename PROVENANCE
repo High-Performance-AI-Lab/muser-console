@@ -1,0 +1,16 @@
+muser-console 0.1.0 provenance
+
+Source
+  Repository: https://github.com/High-Performance-AI-Lab/muser-console
+  License: MIT OR Apache-2.0
+
+Build contract
+  Rust toolchain: 1.93.1
+  Dependencies: Cargo.lock, consumed with --locked
+  Dashboard: ui/muser-dashboard.html, checked in with no CDN or frontend build
+
+The release packager records the exact source commit and SHA-256 identity of
+every platform binary. The Linux GX10 exporter is accepted only with a
+matching hardware smoke receipt; the Mac binaries are smoke-tested after
+they are copied into the bundle. Secrets and measurement databases are not
+release inputs.

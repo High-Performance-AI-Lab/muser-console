@@ -4,6 +4,13 @@ A secure, responsive dashboard for one or more [muser](https://github.com/High-P
 engines. Run it beside an engine, open it from the same computer, or serve it
 over HTTPS on a private network and pair an iPhone with a one-time QR code.
 
+For the shipped one-Mac + one-GX10 path, this repository is optional: the
+`muser` binary already embeds the local dashboard and its Add Node flow. Run
+`muser up`, add the node without a separate loopback login, and keep that
+process running: the same listener loads the Mac decoder and becomes the
+inference server when setup passes. Install muser-console when you need a
+multi-engine fleet view, retained history, or private-network phone access.
+
 muser-console shows live engine telemetry, fleet health, cache behavior,
 sessions, events, and rolling history. It never turns missing measurements
 into zeroes or demo data: unavailable data stays visibly unavailable.
@@ -14,16 +21,45 @@ into zeroes or demo data: unavailable data stays visibly unavailable.
 measurements labeled for exactly what they are — values nothing reported
 show a dash, never a zero.*
 
+## Watch the workflow
+
+[![The shared Muser console onboarding a GX10 producer, handing remote prefill to Metal decode, and reporting measured telemetry](assets/muser-onboarding-and-remote-prefill.png)](https://github.com/High-Performance-AI-Lab/muser/blob/main/docs/assets/muser-onboarding-and-remote-prefill.mp4)
+
+**[▶ Watch the 48-second onboarding and remote-prefill demo](https://github.com/High-Performance-AI-Lab/muser/blob/main/docs/assets/muser-onboarding-and-remote-prefill.mp4)**
+
+The main `muser` binary embeds the same dashboard surface maintained here.
+This is a real, privacy-masked capture; accelerated sections are labeled on
+screen, while the final answer and telemetry are shown in real time.
+
 ## What you get
 
 - **Fleet:** engine instances, topology, prefill nodes, and optional hardware
   exporters.
-- **Inference:** disaggregation, measured cache savings, KV layer behavior,
-  and speculative-decoding counters.
+- **Inference:** a live prompt surface, disaggregation, measured cache
+  savings, KV layer behavior, and speculative-decoding counters.
 - **Activity:** live serving rates, transfers, sessions, and current events.
 - **History:** one-second sampling with gap-preserving charts.
 - **Secure remote access:** HTTPS sessions for laptops and phones, including
   local-network QR pairing without putting an API key in the QR code.
+
+### Cold producer startup stays visible
+
+When **Add node** must start a cold native producer, the producer row expands
+to show five real vLLM milestones: engine setup, weight loading, 8K chunk
+initialization, 128K KV allocation, and the first-request warmup. The active
+segment is animated, carries an elapsed clock, and receives a sanitized
+heartbeat every 15 seconds. It is intentionally not a smooth time percentage:
+vLLM does not expose an honest fractional percentage for each operation. The
+console never relays raw container logs to the browser.
+
+With artifacts already present, final cold receipts reached ready in 187–206
+seconds; the qualified 187-second run finished weights at 108 seconds, began
+KV/kernel warmup at 115, and began first-request warmup at 153. A matching healthy producer remains
+warm when it is re-added. The qualified chunked-prefill connector preserves
+the 131K contract while vLLM initializes an 8K scheduler shape. The remaining
+weight load, CUDA engine initialization, KV allocation, and real warmup cannot
+be disabled while leaving the same ready engine. Details are documented in the
+[muser quickstart](https://github.com/High-Performance-AI-Lab/muser#quickstart).
 
 The dashboard has no CDN, JavaScript package, or frontend build step. The
 server is a single Rust binary and the UI is the checked-in
@@ -74,23 +110,23 @@ Keep this key private. It authorizes both telemetry and management actions.
 ### 4. Create `config.toml`
 
 Save the following as `~/.config/muser-console/config.toml`. Replace every
-`/Users/you/...` path with a real absolute path. TOML paths do not expand `~`
-or shell variables.
+`/absolute/path/to/...` entry with a real absolute path. TOML paths do not
+expand `~` or shell variables.
 
 ```toml
 listen = "127.0.0.1:5959"
 access_key_file = "console.key"
-ui_dir = "/Users/you/Code/muser-console/ui"
+ui_dir = "/absolute/path/to/muser-console/ui"
 
 [history]
 enabled = true
-db_path = "/Users/you/.local/share/muser-console/history.sqlite"
+db_path = "/absolute/path/to/muser-console-data/history.sqlite"
 retention_days = 7
 
 [[instance]]
 name = "local"
 base_url = "http://127.0.0.1:4949"
-api_key_file = "/Users/you/.config/muser/engine.key"
+api_key_file = "/absolute/path/to/muser/engine.key"
 ```
 
 `api_key_file` must point to the same key file used by that muser engine. Key
@@ -171,7 +207,7 @@ listen = "0.0.0.0:5959"
 tls_cert = "console.pem"
 tls_key = "console-key.pem"
 access_key_file = "console.key"
-ui_dir = "/Users/you/Code/muser-console/ui"
+ui_dir = "/absolute/path/to/muser-console/ui"
 ```
 
 Use a specific address such as `192.0.2.50:5959` instead of `0.0.0.0:5959`

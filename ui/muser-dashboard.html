@@ -537,6 +537,49 @@ footer{max-width:1560px;margin:6px auto 30px;padding:0 clamp(14px,3vw,30px);
 .step.planned .si{border-style:dashed}
 .step .srow{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
 .step .selapsed{flex:0 0 auto;color:var(--ink-mute);font:500 10px var(--font-mono)}
+.native-startup{margin-top:7px;padding:7px 8px;border:1px solid var(--border);background:var(--grain)}
+.native-startup .ns-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  color:var(--ink-dim);font-size:10px;line-height:1.3}
+.native-startup .ns-phase{color:var(--ink);font-weight:700}
+.native-startup .ns-meta{flex:0 0 auto;color:var(--ink-mute);font-family:var(--font-mono)}
+.native-startup .ns-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;margin-top:6px}
+.native-startup .ns-seg{position:relative;height:6px;overflow:hidden;background:var(--border-strong)}
+.native-startup .ns-seg.done{background:var(--good)}
+.native-startup .ns-seg.active{background:color-mix(in srgb,var(--glimmer) 42%,var(--border-strong))}
+.native-startup .ns-seg.active::after{content:"";position:absolute;inset:0;width:42%;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--glimmer) 85%,white 15%),transparent);
+  animation:startup-sweep 1.4s ease-in-out infinite}
+@keyframes startup-sweep{from{transform:translateX(-120%)}to{transform:translateX(340%)}}
+
+/* ============================================================= PROMPT */
+#chatPanel{block-size:clamp(380px,44vh,430px);block-size:clamp(380px,44dvh,430px);
+  display:flex;flex-direction:column}
+#chatPanel>.phead{flex:0 0 auto}
+.chatwrap{display:flex;flex:1 1 auto;min-height:0;flex-direction:column;gap:12px}
+.chatlog{display:flex;flex:1 1 auto;min-height:0;flex-direction:column;gap:10px;overflow-y:auto;
+  overscroll-behavior:contain;scrollbar-gutter:stable;padding:2px 4px}
+.chatmsg{display:flex;flex-direction:column;gap:3px;max-width:min(78ch,94%)}
+.chatmsg.user{align-self:flex-end;align-items:flex-end}
+.chatmsg .who{font:700 9px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+.chatmsg .bubble{border:1px solid var(--border);padding:10px 13px;background:var(--raised);
+  white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55;font-size:13.5px}
+.chatmsg.user .bubble{background:var(--glimmer-soft);border-color:color-mix(in srgb,var(--glimmer) 35%,var(--border))}
+.chatmsg.error .bubble{color:var(--crit);border-color:color-mix(in srgb,var(--crit) 35%,var(--border));font-size:12px}
+.chatmsg details.reasoning{border-left:2px solid var(--border-strong);padding:2px 0 2px 10px;max-width:100%;margin-bottom:6px}
+.chatmsg details.reasoning summary{cursor:pointer;font:700 10px var(--font-mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-mute)}
+.chatmsg details.reasoning .rtext{color:var(--ink-mute);font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:5px}
+.caret{display:inline-block;width:8px;height:14px;translate:0 2px;margin-left:2px;
+  background:var(--glimmer);animation:blink 1.05s steps(2,start) infinite}
+@keyframes blink{50%{opacity:0}}
+.chatrow{display:flex;gap:9px;align-items:flex-end}
+.chatrow textarea{flex:1;resize:none;min-height:46px;max-height:150px;padding:11px 13px;
+  border:1px solid var(--border-strong);background:var(--raised);color:var(--ink);font:inherit;font-size:13.5px;line-height:1.45}
+.chatrow textarea::placeholder{color:var(--ink-mute)}
+.chatmeta{display:flex;gap:14px;align-items:center;font-size:11px;color:var(--ink-dim);min-height:15px;flex-wrap:wrap}
+.chatkeyrow{display:flex;gap:9px;align-items:center}
+.chatkeyrow input{flex:1;padding:9px 11px;border:1px solid var(--border-strong);background:var(--raised);
+  color:var(--ink);font:500 13px var(--font-mono)}
 .modal-x.wide{width:auto;padding:0 10px;font-size:10.5px;font-weight:700;letter-spacing:.03em;white-space:nowrap}
 
 .rn-progress{margin-top:9px;display:flex;align-items:center;gap:8px;width:100%;padding:7px 9px;
@@ -638,6 +681,35 @@ footer{max-width:1560px;margin:6px auto 30px;padding:0 clamp(14px,3vw,30px);
 
   <div class="tabpage" id="page-inference" role="tabpanel" aria-labelledby="tab-inference" tabindex="0" hidden>
   <div class="tabgrid">
+
+  <section class="panel span12" id="chatPanel">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Prompt</div>
+        <h2 class="ptitle">Talk to the model</h2>
+      </div>
+      <div class="phint-row">
+        <span class="phint">Live tokens from the selected decoder</span>
+        <button class="btn ghost" id="chatClear" type="button">Clear</button>
+      </div>
+    </div>
+    <div class="chatwrap">
+      <div class="chatlog" id="chatLog">
+        <div class="empty" id="chatEmpty">Ask something and watch the first token arrive.</div>
+      </div>
+      <div class="chatmeta mono" id="chatMeta"></div>
+      <div class="chatkeyrow" id="chatKeyRow" hidden>
+        <input id="chatKeyInput" type="password" placeholder="server or console API key" autocomplete="off" spellcheck="false" />
+        <button class="btn ghost" id="chatKeyUse" type="button">Use key</button>
+      </div>
+      <div class="kvnote" id="chatKeyNote" hidden>The key stays in this tab; it is never put in a URL or log.</div>
+      <div class="chatrow">
+        <textarea id="chatInput" rows="1" placeholder="Ask Muse Glimmer anything — Enter sends, Shift+Enter adds a line" autocomplete="off"></textarea>
+        <button class="btn primary" id="chatSend" type="button">Send</button>
+        <button class="btn ghost" id="chatStop" type="button" hidden>Stop</button>
+      </div>
+    </div>
+  </section>
 
   <section class="panel span7">
     <div class="phead">
@@ -812,6 +884,10 @@ footer{max-width:1560px;margin:6px auto 30px;padding:0 clamp(14px,3vw,30px);
 
   <div class="tabpage" id="page-history" role="tabpanel" aria-labelledby="tab-history" tabindex="0" hidden>
   <div class="tabgrid">
+
+  <section class="panel span12" id="histUnavailable">
+    <div class="empty">Retained history is available through muser-console.</div>
+  </section>
 
   <section class="panel span12" id="histPanel" hidden>
     <div class="phead">
@@ -2136,10 +2212,15 @@ authBackdrop.addEventListener("click", event=>{ if(event.target===authBackdrop) 
 
 function setAuthenticatedUI(authenticated){
   $("#loginBtn").textContent=authenticated?"Signed in":"Sign in";
-  $("#pairBtn").hidden=!(authenticated && location.protocol==="https:");
+  syncPairingButton();
+}
+function syncPairingButton(){
+  const authenticated=!!(dashboardCsrf||dashboardBearer);
+  // Pairing belongs to the optional fleet console. A direct Muser HTTPS
+  // engine has the same session surface but intentionally no pairing API.
+  $("#pairBtn").hidden=!(authenticated && location.protocol==="https:" && fleetInstances);
 }
 async function restoreDashboardSession(){
-  if(location.protocol!=="https:") return false;
   try{
     const response=await fetch(ENDPOINT+"/v1/dashboard/session",{method:"POST",cache:"no-store"});
     if(!response.ok) return false;
@@ -2288,20 +2369,218 @@ tbtn.addEventListener("click",()=>{ root.setAttribute("data-theme", currentDark(
   _colCache.clear(); sizePipe(); spIn.size(); spOut.size(); drawAllHist(); });
 setTheme();
 
+/* ============================================================= PROMPT */
+/* Streams the selected decoder over the same authenticated origin. The
+   engine emits one SSE chunk per sampled token, so the live token count is
+   observed rather than estimated. Model text reaches the DOM only through
+   textContent. */
+const chatLog=$("#chatLog"), chatInput=$("#chatInput"), chatSend=$("#chatSend"),
+  chatStop=$("#chatStop"), chatMeta=$("#chatMeta"), chatEmpty=$("#chatEmpty"),
+  chatKeyRow=$("#chatKeyRow"), chatKeyInput=$("#chatKeyInput"), chatKeyNote=$("#chatKeyNote");
+let chatHistory=[];
+let chatAbort=null;
+let chatBearer="";
+
+function chatScroll(){ chatLog.scrollTop=chatLog.scrollHeight; }
+function chatMsg(role){
+  if(chatEmpty && chatEmpty.isConnected) chatEmpty.hidden=true;
+  const msg=document.createElement("div");
+  msg.className="chatmsg "+role;
+  const who=document.createElement("span");
+  who.className="who";
+  who.textContent = role==="user" ? "you" : role==="assistant" ? "muse glimmer" : "error";
+  const bubble=document.createElement("div");
+  bubble.className="bubble";
+  msg.appendChild(who); msg.appendChild(bubble);
+  chatLog.appendChild(msg);
+  chatScroll();
+  return {msg,bubble};
+}
+function chatErrMsg(value){
+  chatMsg("error").bubble.textContent=value;
+  chatScroll();
+}
+function chatAssistantMsg(){
+  const {msg,bubble}=chatMsg("assistant");
+  const details=document.createElement("details");
+  details.className="reasoning"; details.hidden=true;
+  const summary=document.createElement("summary");
+  const rtext=document.createElement("div");
+  rtext.className="rtext";
+  details.appendChild(summary); details.appendChild(rtext);
+  msg.insertBefore(details,bubble);
+  const output=document.createElement("span");
+  const caret=document.createElement("span");
+  caret.className="caret";
+  bubble.appendChild(output); bubble.appendChild(caret);
+  return {msg,bubble,output,caret,details,summary,rtext};
+}
+function chatSetStreaming(on){
+  chatSend.disabled=on; chatStop.hidden=!on;
+  if(!on) chatInput.focus();
+}
+function chatAutosize(){
+  chatInput.style.height="auto";
+  chatInput.style.height=Math.min(chatInput.scrollHeight,150)+"px";
+}
+function chatMetaLive(tokens,ttftMs,startedAt){
+  const generationSeconds=Math.max((performance.now()-(startedAt+ttftMs))/1000,0.001);
+  chatMeta.textContent=tokens+" tok · "+(tokens/generationSeconds).toFixed(1)
+    +" tok/s · ttft "+Math.round(ttftMs)+" ms";
+}
+function chatAuthHeaders(){
+  const headers={"content-type":"application/json"};
+  const bearer=chatBearer||dashboardBearer;
+  if(bearer) headers.authorization="Bearer "+bearer;
+  else if(dashboardCsrf) headers["x-csrf-token"]=dashboardCsrf;
+  return headers;
+}
+
+async function chatGenerate(){
+  const prompt=chatInput.value.trim();
+  if(!prompt || (chatAbort && !chatAbort.signal.aborted)) return;
+  chatInput.value=""; chatAutosize();
+  chatHistory.push({role:"user",content:prompt});
+  chatMsg("user").bubble.textContent=prompt;
+  const assistant=chatAssistantMsg();
+  chatAbort=new AbortController();
+  chatSetStreaming(true);
+  chatMeta.textContent="waiting for the first token…";
+  const startedAt=performance.now(), base=apiBase();
+  let ttftMs=null, tokens=0, reasoningChars=0, contentStarted=false, usage=null, finish=null;
+  let failed=false, authError=false;
+  try{
+    const response=await fetch(base+"/v1/chat/completions",{
+      method:"POST",headers:chatAuthHeaders(),signal:chatAbort.signal,
+      body:JSON.stringify({
+        model:"muse-glimmer-30b",messages:chatHistory.slice(-30),stream:true,
+        stream_options:{include_usage:true},max_tokens:1024
+      })
+    });
+    if(response.status===401 || response.status===403){
+      authError=true;
+      throw new Error("This server needs its API key before it can run a prompt.");
+    }
+    if(!response.ok || !response.body){
+      let message="HTTP "+response.status;
+      try{
+        const body=await response.json(), error=body&&body.error;
+        if(error) message=error.message||String(error);
+      }catch(_error){ /* the status remains the honest fallback */ }
+      throw new Error(message);
+    }
+    const reader=response.body.getReader(), decoder=new TextDecoder();
+    let pending="";
+    for(;;){
+      const chunk=await reader.read();
+      pending+=decoder.decode(chunk.value||new Uint8Array(),{stream:!chunk.done});
+      let boundary;
+      while((boundary=pending.indexOf("\n\n"))>=0){
+        const event=pending.slice(0,boundary); pending=pending.slice(boundary+2);
+        const data=event.split("\n").filter(line=>line.startsWith("data:"))
+          .map(line=>line.slice(5).trimStart()).join("\n");
+        if(!data || data==="[DONE]") continue;
+        let parsed=null;
+        try{ parsed=JSON.parse(data); }catch(_error){ continue; }
+        if(parsed && parsed.usage) usage=parsed.usage;
+        const choice=parsed && parsed.choices && parsed.choices[0];
+        if(!choice) continue;
+        if(choice.finish_reason) finish=choice.finish_reason;
+        const delta=choice.delta||{};
+        if(typeof delta.reasoning_content==="string" && delta.reasoning_content){
+          if(ttftMs==null) ttftMs=performance.now()-startedAt;
+          reasoningChars+=delta.reasoning_content.length;
+          assistant.details.hidden=false; assistant.details.open=true;
+          assistant.summary.textContent="reasoning · live · "+reasoningChars+" chars";
+          assistant.rtext.textContent+=delta.reasoning_content;
+          chatScroll();
+        }
+        if(typeof delta.content==="string" && delta.content){
+          if(ttftMs==null) ttftMs=performance.now()-startedAt;
+          if(!contentStarted){
+            contentStarted=true;
+            assistant.details.open=false;
+          }
+          tokens+=1;
+          assistant.output.textContent+=delta.content;
+          chatMetaLive(tokens,ttftMs,startedAt);
+          chatScroll();
+        }
+      }
+      if(chunk.done) break;
+    }
+  }catch(error){
+    if(error && error.name!=="AbortError"){
+      failed=true; chatHistory.pop(); assistant.msg.remove();
+      chatErrMsg(error && error.message || String(error));
+      if(authError){ chatKeyRow.hidden=false; chatKeyNote.hidden=false; chatKeyInput.focus(); }
+    }
+  }finally{
+    assistant.caret.remove();
+    if(reasoningChars && !assistant.details.open)
+      assistant.summary.textContent="reasoning · "+reasoningChars+" chars";
+    chatSetStreaming(false); chatAbort=null;
+  }
+  const answer=assistant.output.textContent;
+  if(answer){
+    chatHistory.push({role:"assistant",content:answer});
+    const generationSeconds=ttftMs==null ? null
+      : Math.max((performance.now()-(startedAt+ttftMs))/1000,0.001);
+    const outputTokens=usage && Number.isFinite(usage.completion_tokens)
+      ? usage.completion_tokens : tokens;
+    const parts=[];
+    if(usage && Number.isFinite(usage.prompt_tokens)) parts.push(usage.prompt_tokens+" prompt tok");
+    parts.push(outputTokens+" tok out");
+    if(ttftMs!=null) parts.push("ttft "+Math.round(ttftMs)+" ms");
+    if(generationSeconds!=null) parts.push((outputTokens/generationSeconds).toFixed(1)+" tok/s");
+    if(finish && finish!=="stop") parts.push("finish: "+finish);
+    chatMeta.textContent=parts.join(" · ");
+  }else{
+    if(!failed){ assistant.msg.remove(); chatHistory.pop(); }
+    chatMeta.textContent="";
+  }
+}
+chatInput.addEventListener("input",chatAutosize);
+chatInput.addEventListener("keydown",event=>{
+  if(event.key==="Enter" && !event.shiftKey){ event.preventDefault(); chatGenerate(); }
+});
+chatSend.addEventListener("click",chatGenerate);
+chatStop.addEventListener("click",()=>{ if(chatAbort) chatAbort.abort(); });
+$("#chatClear").addEventListener("click",()=>{
+  if(chatAbort) chatAbort.abort();
+  chatHistory=[]; chatLog.textContent="";
+  chatLog.appendChild(chatEmpty); chatEmpty.hidden=false;
+  chatMeta.textContent=""; chatKeyRow.hidden=true; chatKeyNote.hidden=true;
+});
+function chatUseKey(){
+  const key=chatKeyInput.value;
+  if(!key) return;
+  chatBearer=key; chatKeyInput.value="";
+  chatKeyRow.hidden=true; chatKeyNote.hidden=true;
+  chatMeta.textContent="key accepted for this tab — send the prompt again";
+  chatInput.focus();
+}
+$("#chatKeyUse").addEventListener("click",chatUseKey);
+chatKeyInput.addEventListener("keydown",event=>{
+  if(event.key==="Enter"){ event.preventDefault(); chatUseKey(); }
+});
+
 /* ============================================================= ADD-NODE WIZARD */
 /* muser.node-progress.v2 checklist order, per docs/one-button contract.
    The wire vocabulary is the engine's; the labels are the operator's. Each
    one says what is happening to their machine, and — where the wait is long
    or the question is "where do my keys go" — answers that in the same line. */
-const STEP_ORDER = ["preflight","deploy","model","enroll","daemon","netqual","smoke"];
+const ONBOARDING_STEPS = ["preflight","deploy","model","enroll","daemon","netqual","smoke"];
+const STEP_ORDER = [...ONBOARDING_STEPS,"activate"];
 const STEP_LABEL = {
   preflight:"Checking the node",
   deploy:"Installing the runtime",
   model:"Copying model weights · several minutes",
   enroll:"Exchanging certificates · keys stay on their own machines",
-  daemon:"Starting the prefill service",
+  daemon:"Starting the prefill service · weight loading is the long phase",
   netqual:"Measuring the link",
-  smoke:"Test handoff · 3 exchanges, 2048-token prompt"
+  smoke:"Test handoff · authenticated KV install + bounded decode",
+  activate:"Starting the Mac decoder"
 };
 /* The one-line form, for the registry card's mini row where there is no space
    for the reassurance half of the label. */
@@ -2311,6 +2590,46 @@ const stepShort = s => STEP_SHORT[s] || String(STEP_LABEL[s]||s).split(" · ")[0
    engine sends it, and dropping it on the floor made those rows indistinct
    from ones nothing had been said about. */
 const STATUS_SET = new Set(["planned","start","ok","fail","info"]);
+const NATIVE_STARTUP_PHASES = [
+  ["engine-setup","Engine setup"],
+  ["weights","Load weights"],
+  ["batch-profile","Init 8K chunks"],
+  ["kv-warmup","Allocate 128K KV"],
+  ["request-warmup","Warm first request"],
+  ["ready","Ready"]
+];
+const NATIVE_STARTUP_LABEL = new Map(NATIVE_STARTUP_PHASES);
+function readNativeStartup(raw){
+  const value=raw && raw.data && raw.data.native_startup;
+  if(!value || typeof value!=="object") return null;
+  const phase=String(value.phase||"");
+  const completed=Number(value.completed), total=Number(value.total);
+  const elapsedSeconds=Number(value.elapsed_seconds);
+  const expected=NATIVE_STARTUP_PHASES.findIndex(item=>item[0]===phase);
+  if(expected<0 || total!==5 || completed!==expected || !Number.isInteger(elapsedSeconds) ||
+      elapsedSeconds<0 || elapsedSeconds>900) return null;
+  return {phase,completed,total,elapsedSeconds,receivedAt:Date.now()};
+}
+function nativeStartupElapsed(value){
+  const since=Math.max(0,Date.now()-value.receivedAt);
+  return fmtElapsed(value.elapsedSeconds*1000+since);
+}
+function nativeStartupMarkup(value){
+  const label=NATIVE_STARTUP_LABEL.get(value.phase)||"Starting vLLM";
+  const segments=Array.from({length:value.total},(_,index)=>{
+    const cls=index<value.completed ? "done" :
+      (index===value.completed && value.completed<value.total ? "active" : "");
+    return `<span class="ns-seg ${cls}" aria-hidden="true"></span>`;
+  }).join("");
+  const valueText=label+", "+value.completed+" of "+value.total+" milestones complete";
+  return `<div class="native-startup" role="progressbar" aria-label="vLLM startup"
+      aria-valuemin="0" aria-valuemax="${value.total}" aria-valuenow="${value.completed}"
+      aria-valuetext="${esc(valueText)}" title="Startup milestones, not a time estimate">
+    <div class="ns-head"><span class="ns-phase">${esc(label)}</span>
+      <span class="ns-meta">${value.completed} of ${value.total} · <span class="ns-elapsed">${esc(nativeStartupElapsed(value))}</span></span></div>
+    <div class="ns-track">${segments}</div>
+  </div>`;
+}
 
 /* Registry state slugs are the engine's identifiers. What the operator reads
    is what the node is doing. */
@@ -2575,6 +2894,7 @@ async function fetchFleet(){
       selectedInstance=fallback;
     }
     renderFleet();
+    syncPairingButton();
     writeNavigation("replace");
     startFleetPoll();
   }catch(err){
@@ -2583,6 +2903,7 @@ async function fetchFleet(){
     stopFleetPoll();
     fleetInstances = null; selectedInstance = "";
     renderFleet();
+    syncPairingButton();
   }
 }
 
@@ -2947,22 +3268,24 @@ $("#wzName").addEventListener("input", updateTargetHint);
 $("#wzApiKey").addEventListener("keydown", e=>{ if(e.key==="Enter") $("#wizardAuthSubmit").click(); });
 
 /* ---- run state ----------------------------------------------------------- */
-function newRun(spec, name){
+function newRun(spec, name, expectsActivation){
   const run={
     name, host:spec.host, user:spec.user, keyPath:spec.keyPath||"",
     nameOverride:spec.nameOverride||"",
+    expectsActivation:expectsActivation===true,
+    stepOrder:expectsActivation===true ? STEP_ORDER : ONBOARDING_STEPS,
     startedAt:Date.now(), finishedAt:0,
     stage:null, stages:{}, log:[],
     status:"running",              // running | ok | failed | lost
     failedStage:"", failDetail:"", startMessage:"", notice:"",
     netqual:null, terminal:false, reconnects:0, abort:null
   };
-  for(const key of STEP_ORDER)
-    run.stages[key]={status:"pending", detail:"", startedAt:0, endedAt:0};
+  for(const key of run.stepOrder)
+    run.stages[key]={status:"pending", detail:"", startedAt:0, endedAt:0, nativeStartup:null};
   return run;
 }
-function beginRun(spec, name){
-  nodeRun=newRun(spec, name);
+function beginRun(spec, accepted){
+  nodeRun=newRun(spec, accepted.name, accepted.activatesInference);
   startRunTicker();
   if(wizardOpen()){ showWizardScreen(); syncWizardChrome(); }
   renderRegistryNodes();
@@ -2987,12 +3310,15 @@ function tickRun(){
   const total=fmtElapsed((run.finishedAt||Date.now())-run.startedAt);
   if(wizardOpen() && !wizardProgress.hidden){
     $("#wzRunElapsed").textContent=total;
-    for(const key of STEP_ORDER){
+    for(const key of run.stepOrder){
       const st=run.stages[key];
       const row=document.getElementById("step-"+key);
       const cell=row && row.querySelector(".selapsed");
       if(cell) cell.textContent = st && st.startedAt
         ? fmtElapsed((st.endedAt||Date.now())-st.startedAt) : "";
+      const nativeElapsed=row && row.querySelector(".ns-elapsed");
+      if(nativeElapsed && st.nativeStartup)
+        nativeElapsed.textContent=nativeStartupElapsed(st.nativeStartup);
     }
   }
   const mini=$("#regNodes").querySelector(".rn-progress .rp-time");
@@ -3004,14 +3330,16 @@ function renderRun(){
   if(!run) return;
   $("#wzRunName").textContent=run.name;
   $("#wzRunElapsed").textContent=fmtElapsed((run.finishedAt||Date.now())-run.startedAt);
-  stepListEl.innerHTML=STEP_ORDER.map(key=>{
-    const st=run.stages[key]||{status:"pending", detail:"", startedAt:0, endedAt:0};
+  stepListEl.innerHTML=run.stepOrder.map(key=>{
+    const st=run.stages[key]||{status:"pending", detail:"", startedAt:0, endedAt:0, nativeStartup:null};
     const took=st.startedAt ? fmtElapsed((st.endedAt||Date.now())-st.startedAt) : "";
+    const native=key==="daemon" && st.nativeStartup ? nativeStartupMarkup(st.nativeStartup) : "";
     return `<div class="step ${esc(st.status)}" id="step-${esc(key)}">
       <span class="si"></span>
       <div class="sn">
         <div class="srow"><b>${esc(STEP_LABEL[key]||key)}</b><span class="selapsed">${esc(took)}</span></div>
         <small>${esc(st.detail||"")}</small>
+        ${native}
       </div>
     </div>`;
   }).join("");
@@ -3035,8 +3363,10 @@ function applyProgress(raw){
   const previousStage = run.stage;
   if(step){
     const st = run.stages[step] ||
-      (run.stages[step]={status:"pending", detail:"", startedAt:0, endedAt:0});
+      (run.stages[step]={status:"pending", detail:"", startedAt:0, endedAt:0, nativeStartup:null});
     if(detail) st.detail=detail;
+    const nativeStartup=step==="daemon" ? readNativeStartup(raw) : null;
+    if(nativeStartup) st.nativeStartup=nativeStartup;
     if(status==="planned" && st.status==="pending") st.status="planned";
     if(status==="start"){
       st.status="start";
@@ -3059,7 +3389,7 @@ function applyProgress(raw){
     run.status="failed"; run.failedStage=step||run.stage||""; run.failDetail=detail;
     run.finishedAt=Date.now(); run.terminal=true;
     finishRun();
-  } else if(step==="smoke" && status==="ok"){
+  } else if(step===(run.expectsActivation ? "activate" : "smoke") && status==="ok"){
     run.status="ok"; run.finishedAt=Date.now(); run.terminal=true;
     const link=registryLink(run.name);
     if(!run.netqual && link) run.netqual=link;
@@ -3179,7 +3509,7 @@ async function streamProgressWithRetry(run){
 function adoptRegistryOutcome(run){
   const node=registryNodes.find(n=>n && n.name===run.name);
   if(!node) return false;
-  if(node.state==="healthy"){
+  if(node.state==="healthy" && !run.expectsActivation){
     run.status="ok"; run.finishedAt=Date.now(); run.notice="";
     if(!run.netqual) run.netqual=registryLink(run.name);
     finishRun(); renderAllRunViews(); return true;
@@ -3213,9 +3543,7 @@ function resumeProgressStream(){
 
 /* ---- result cards -------------------------------------------------------- */
 function serveCommand(name){
-  const model=(lastSnap && lastSnap.cluster && lastSnap.cluster.model) || "<model>";
-  return "MUSER_CROSS_VENDOR_QK=1 muser serve --model "+model
-    +" --prefill remote --cluster-config ~/.muser/nodes/"+name+"/cluster.json";
+  return "muser up";
 }
 const COPY_LOG_BTN = '<button class="btn ghost" type="button" data-copy="log">Copy log</button>';
 const RETRY_BTN = '<button class="btn ghost" type="button" data-run-retry="1">Retry</button>';
@@ -3249,6 +3577,7 @@ function classifyFailure(run){
     return {kind:"ssh"};
   if(stage==="deploy" || stage==="model") return {kind:"transfer"};
   if(stage==="enroll") return {kind:"enroll"};
+  if(stage==="activate") return {kind:"activate"};
   if(stage==="daemon" || stage==="smoke") return {kind:"handoff"};
   if(stage==="netqual") return {kind:"link"};
   if(stage==="preflight") return {kind:"preflight"};
@@ -3284,6 +3613,9 @@ function failureCardHtml(run){
   } else if(cause.kind==="handoff"){
     title="The node came up but the test handoff didn't pass.";
     note="The prefill service started; the 2048-token test exchange did not complete.";
+  } else if(cause.kind==="activate"){
+    title="The node passed, but the Mac decoder did not start.";
+    note="The setup server is still running. Retry after checking the reported decoder error.";
   } else if(cause.kind==="slow-link"){
     title="Link measured "+cause.gbps.toFixed(1)+" Gb/s, below the 3.0 Gb/s minimum";
     note="Retrying will not make the link faster — only a faster connection between the two machines will.";
@@ -3302,6 +3634,14 @@ function failureCardHtml(run){
 function successCardHtml(run){
   const link=run.netqual || registryLink(run.name);
   const measured=linkText(link);
+  if(run.expectsActivation){
+    return `<div class="result-card success">
+      <b>Muser ready</b>
+      ${measured?`<span class="rc-note">Link ${esc(measured)}, measured just now.</span>`:""}
+      <span class="rc-note">The producer and Mac decoder are ready on the same server. Close this window and send a prompt.</span>
+      <div class="rc-actions">${COPY_LOG_BTN}</div>
+    </div>`;
+  }
   return `<div class="result-card success">
     <b>Node ready</b>
     ${measured?`<span class="rc-note">Link ${esc(measured)}, measured just now.</span>`:""}
@@ -3374,9 +3714,9 @@ wizardResultEl.addEventListener("click", event=>{
 async function submitNode(spec){
   const body={host:spec.host, user:spec.user, name:spec.name};
   if(spec.keyPath) body.key_path=spec.keyPath;
-  const authHeaders = location.protocol==="https:"
-    ? {"content-type":"application/json","x-csrf-token":dashboardCsrf}
-    : {"content-type":"application/json", authorization:"Bearer "+dashboardBearer};
+  const authHeaders={"content-type":"application/json"};
+  if(dashboardBearer) authHeaders.authorization="Bearer "+dashboardBearer;
+  else if(dashboardCsrf) authHeaders["x-csrf-token"]=dashboardCsrf;
   const response = await fetch(apiBase()+"/v1/nodes",
     {method:"POST", headers:authHeaders, body:JSON.stringify(body)});
   if(response.status===401 || response.status===403){
@@ -3397,7 +3737,10 @@ async function submitNode(spec){
     throw httpError(response.status, detail);
   }
   const accepted = await response.json();
-  return (accepted && accepted.name) || spec.name;
+  return {
+    name:(accepted && accepted.name) || spec.name,
+    activatesInference:!!(accepted && accepted.activates_inference)
+  };
 }
 
 $("#wizardSubmit").addEventListener("click", async ()=>{
@@ -3559,7 +3902,8 @@ const HIST_SRC = {metrics:"metrics", snapshot:"snapshot", agent:"exporter"};
 const histHintText = r =>
   `${r.step} s buckets · gaps preserved`;
 
-const histPanel=$("#histPanel"), histGrid=$("#histGrid"), histHint=$("#histHint"),
+const histPanel=$("#histPanel"), histUnavailable=$("#histUnavailable"),
+  histGrid=$("#histGrid"), histHint=$("#histHint"),
   histRangesEl=$("#histRanges"), histInstName=$("#histInstName"), histTip=$("#histTip");
 let histRange=HIST_RANGES[0], histWindow=null, histCharts=[], histTipOwner=null;
 let histInst="", histLastFetch=0, histInflight=false, histFailed=false;
@@ -4003,6 +4347,7 @@ document.addEventListener("keydown", e=>{ if(e.key==="Escape") histClearHover();
 // it too. The supervisor pauses only while the document or fleet is off.
 setInterval(()=>{
   const on=histActive();
+  histUnavailable.hidden=on;
   const wasHidden=histPanel.hidden;
   histPanel.hidden=!on;
   if(!on){ if(histInst) resetHistory(); return; }

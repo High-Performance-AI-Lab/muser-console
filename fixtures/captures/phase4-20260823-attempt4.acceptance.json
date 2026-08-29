@@ -187,12 +187,12 @@
     "cluster_config_sha256": "495f349e8291da5a2111003338bd5f8c9080debb78797f8e37191beae5250821",
     "console": {
       "bytes": 4706608,
-      "path": "/Users/you/Code/muser-console/target/release/muser-console",
+      "path": "/opt/muser-console/target/release/muser-console",
       "sha256": "9212547bf721d8b352b80106fe6c1302f00e39f240830a528e103531aa00312d"
     },
     "controller": {
       "bytes": 42704,
-      "path": "/Users/you/Code/muser-console/scripts/acceptance_agents.py",
+      "path": "/opt/muser-console/scripts/acceptance_agents.py",
       "sha256": "c0b7643e7be45387d0be9967a7552bb6282ad36d8ef08902d3646b5889edbd1f"
     },
     "edge": {
@@ -202,7 +202,7 @@
     },
     "engine": {
       "bytes": 19328144,
-      "path": "/Users/you/Code/muser/target/release/muser",
+      "path": "/opt/muser/target/release/muser",
       "sha256": "d724f53d0ac99081fe016a96011bacc34d5f5e7ba194a711b772bde5d35147a3"
     },
     "engine_source_commit": "006786e84876d2fd53fdd24621f1baf0a14e04a3",
@@ -219,7 +219,7 @@
     },
     "mac_exporter": {
       "bytes": 1433888,
-      "path": "/Users/you/Code/muser-console/target/release/mac-exporter",
+      "path": "/opt/muser-console/target/release/mac-exporter",
       "sha256": "c41466e27c901ef99f04886aa4f05bec5eb633846621413c1fffdea219fb521f"
     },
     "metallib": {

@@ -39,6 +39,7 @@ pub fn router(state: AppState) -> Router {
         .route("/snapshot", get(proxied_buffered))
         .route("/metrics", get(proxied_buffered))
         .route("/telemetry", get(proxied_streaming))
+        .route("/v1/chat/completions", post(proxied_streaming))
         .route("/v1/nodes", get(proxied_buffered).post(proxied_buffered))
         .route("/v1/nodes/{name}/progress", get(proxied_streaming))
         .route("/v1/ws-tickets", post(ws::mint))
@@ -48,6 +49,10 @@ pub fn router(state: AppState) -> Router {
         .route("/i/{instance}/snapshot", get(instance_buffered))
         .route("/i/{instance}/metrics", get(instance_buffered))
         .route("/i/{instance}/telemetry", get(instance_streaming))
+        .route(
+            "/i/{instance}/v1/chat/completions",
+            post(instance_streaming),
+        )
         .route(
             "/i/{instance}/v1/nodes",
             get(instance_buffered).post(instance_buffered),

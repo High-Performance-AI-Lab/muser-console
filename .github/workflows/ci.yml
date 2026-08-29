@@ -1,0 +1,67 @@
+name: public-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  rust-tests:
+    name: Rust tests and release build
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - name: Checkout muser-console
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.93.1 --profile minimal
+      - name: Test the locked workspace
+        run: cargo test --workspace --locked
+      - name: Build all release binaries
+        run: cargo build --workspace --release --locked
+
+  clippy:
+    name: Clippy
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - name: Checkout muser-console
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.93.1 --profile minimal --component clippy
+      - name: Deny warnings across workspace targets
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+  rustfmt:
+    name: Rust formatting
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - name: Checkout muser-console
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.93.1 --profile minimal --component rustfmt
+      - name: Check formatting
+        run: cargo fmt --check
+
+  rustsec:
+    name: Rust dependency advisories
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout muser-console
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.93.1 --profile minimal
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --version 0.22.2 --locked
+      - name: Deny vulnerabilities, warnings, and yanked dependencies
+        run: cargo audit --deny warnings
