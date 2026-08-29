@@ -23,13 +23,13 @@ show a dash, never a zero.*
 
 ## Watch the workflow
 
-[![The shared Muser console onboarding a GX10 producer, handing remote prefill to Metal decode, and reporting measured telemetry](assets/muser-onboarding-and-remote-prefill.png)](https://github.com/High-Performance-AI-Lab/muser/blob/main/docs/assets/muser-onboarding-and-remote-prefill.mp4)
-
-**[▶ Watch the 48-second onboarding and remote-prefill demo](https://github.com/High-Performance-AI-Lab/muser/blob/main/docs/assets/muser-onboarding-and-remote-prefill.mp4)**
+https://github.com/user-attachments/assets/02b6e368-fe46-4167-a7f0-1380e0ce2a47
 
 The main `muser` binary embeds the same dashboard surface maintained here.
 This is a real, privacy-masked capture; accelerated sections are labeled on
-screen, while the final answer and telemetry are shown in real time.
+screen, while the final answer and telemetry are shown in real time. The
+source-controlled [H.264 MP4](https://github.com/High-Performance-AI-Lab/muser/blob/main/docs/assets/muser-onboarding-and-remote-prefill.mp4)
+is also available for download.
 
 ## What you get
 
