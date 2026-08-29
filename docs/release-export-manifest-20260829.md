@@ -14,11 +14,11 @@ tagging, changing repository visibility, or publishing a GitHub release.
 
 ## Exhaustive path inventory
 
-The intended export contains 149 paths. The SHA-256 of their
+The intended export contains 151 paths. The SHA-256 of their
 newline-terminated, byte-sorted relative path list is:
 
 ```text
-75644c0845077ed05097baebfc508b2f5d95174d3b0cb08b30f976225cd733b7
+afc41d734e0632bebd741981f85364d00bb181d043fdd934c1a496b4b5b5bfdf
 ```
 
 Reproduce the inventory before staging:
@@ -45,9 +45,10 @@ an unmatched or additional path stops the export.
 | Ship as-is | `fixtures/**` | 69 |
 | Ship as-is | `schema/**` | 2 |
 | Ship as-is | `scripts/**` | 2 |
+| Ship as-is | `skills/**` | 2 |
 | Ship as-is | `ui/**` | 1 |
 | Needs trim | None | 0 |
-| Exclude | None of the 149 candidate paths | 0 |
+| Exclude | None of the 151 candidate paths | 0 |
 
 Repository metadata, build output, local configuration, databases, and OS
 metadata are outside the candidate set and must not be copied: `.git/**`,
@@ -61,7 +62,7 @@ reserved example addresses and generic `/absolute/path/to/...` values.
 
 1. Preserve the existing sanitized Lab history and append an ordinary commit;
    never rewrite or force-push it.
-2. Require exactly the 149 paths above in the publication snapshot.
+2. Require exactly the 151 paths above in the publication snapshot.
 3. Use `videlalvaro <30834+videlalvaro@users.noreply.github.com>` for every
    new author and committer identity.
 4. Do not add private Git history, credentials, local databases, build

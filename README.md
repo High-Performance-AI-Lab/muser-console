@@ -149,6 +149,13 @@ pbcopy < "$HOME/.config/muser-console/console.key"
 The first configured `[[instance]]` is selected by default. Stop the console
 with `Ctrl-C`.
 
+## Repository skill
+
+Operational assistants can follow
+[`muser-console-up`](skills/muser-console-up/SKILL.md) to decide whether the
+standalone service is needed, configure it without exposing credentials, and
+prove both console health and a real engine-backed prompt.
+
 ## Open the console from another computer
 
 muser-console can be reached from other computers on your network. When it's
