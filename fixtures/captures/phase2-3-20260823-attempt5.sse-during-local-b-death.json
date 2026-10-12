@@ -1,0 +1,128 @@
+{
+  "captured_at": "2026-08-23T21:05:48.353622+00:00",
+  "frame_count": 15,
+  "frames": [
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 0,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 1,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 2,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 3,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 4,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 5,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 6,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 7,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 8,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 9,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 10,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 11,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 12,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 13,
+      "type": "snapshot",
+      "v": 1
+    },
+    {
+      "event": "snapshot",
+      "schema_version": 1,
+      "seq": 14,
+      "type": "snapshot",
+      "v": 1
+    }
+  ],
+  "interval_seconds": [
+    1.000166,
+    1.000219,
+    1.000012,
+    1.000338,
+    0.999459,
+    1.000756,
+    1.000063,
+    1.000058,
+    1.000087,
+    0.999271,
+    0.999787,
+    1.000271,
+    1.000781,
+    0.999566
+  ],
+  "max_interval_seconds": 1.000781
+}

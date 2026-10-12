@@ -1,0 +1,109 @@
+{
+  "series": {
+    "gpu0_memory_total_bytes": {
+      "honesty": null,
+      "kind": "gauge",
+      "points": [],
+      "source": "agent"
+    },
+    "gpu0_memory_used_bytes": {
+      "honesty": null,
+      "kind": "gauge",
+      "points": [],
+      "source": "agent"
+    },
+    "gpu0_power_watts": {
+      "honesty": "agent-measured",
+      "kind": "gauge",
+      "points": [
+        [
+          1787525319979,
+          7.951
+        ],
+        [
+          1787525320981,
+          7.929
+        ],
+        [
+          1787525321981,
+          7.946
+        ],
+        [
+          1787525322981,
+          7.902
+        ],
+        [
+          1787525323980,
+          7.907
+        ],
+        [
+          1787525324980,
+          7.912
+        ]
+      ],
+      "source": "agent"
+    },
+    "gpu0_temperature_celsius": {
+      "honesty": "agent-measured",
+      "kind": "gauge",
+      "points": [
+        [
+          1787525319979,
+          40.0
+        ],
+        [
+          1787525320981,
+          40.0
+        ],
+        [
+          1787525321981,
+          40.0
+        ],
+        [
+          1787525322981,
+          40.0
+        ],
+        [
+          1787525323980,
+          40.0
+        ],
+        [
+          1787525324980,
+          40.0
+        ]
+      ],
+      "source": "agent"
+    },
+    "gpu0_utilization_ratio": {
+      "honesty": "agent-measured",
+      "kind": "gauge",
+      "points": [
+        [
+          1787525319979,
+          0.0
+        ],
+        [
+          1787525320981,
+          0.0
+        ],
+        [
+          1787525321981,
+          0.0
+        ],
+        [
+          1787525322981,
+          0.0
+        ],
+        [
+          1787525323980,
+          0.0
+        ],
+        [
+          1787525324980,
+          0.0
+        ]
+      ],
+      "source": "agent"
+    }
+  }
+}

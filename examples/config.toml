@@ -1,0 +1,39 @@
+# Paths are examples only. Provision every *.key file separately with mode
+# 0600; never place credential values in this TOML.
+listen = "127.0.0.1:5959"
+access_key_file = "/etc/muser-console/console.key"
+ui_dir = "/opt/muser-console/ui"
+
+# For LAN/VPN HTTPS and QR device pairing, change `listen` to the host's
+# private address (or 0.0.0.0), uncomment both entries, and use a private key
+# with exact mode 0600. The certificate must cover the browser hostname/IP.
+# tls_cert = "/etc/muser-console/console-chain.pem"
+# tls_key = "/etc/muser-console/console-tls.key"
+
+[history]
+db_path = "/var/lib/muser-console/history.sqlite"
+retention_days = 7
+enabled = true
+
+[[instance]]
+name = "gx"
+base_url = "https://192.0.2.10:4949"
+api_key_file = "/etc/muser-console/gx-engine.key"
+ca_file = "/etc/muser-console/lab-ca.pem"
+
+[[instance]]
+name = "mac"
+base_url = "http://127.0.0.1:4950"
+api_key_file = "/etc/muser-console/mac-engine.key"
+
+[[agent]]
+name = "gx-gpu"
+base_url = "http://192.0.2.10:9707"
+instance = "gx"
+kind = "gx10"
+
+[[agent]]
+name = "mac-power"
+base_url = "http://127.0.0.1:9708"
+instance = "mac"
+kind = "mac"

@@ -1,0 +1,42 @@
+# TYPE completion_traffic_tok_s_10s gauge
+completion_traffic_tok_s_10s 0
+# TYPE muser_queue_depth gauge
+muser_queue_depth 0
+# TYPE muser_overload_rejections_total counter
+muser_overload_rejections_total 0
+# TYPE muser_completion_tokens_total counter
+muser_completion_tokens_total 2
+# TYPE muser_ttft_milliseconds gauge
+muser_ttft_milliseconds{quantile="0.50"} 380.095125
+muser_ttft_milliseconds{quantile="0.95"} 380.095125
+# TYPE muser_itl_milliseconds gauge
+muser_itl_milliseconds{quantile="0.50"} 38.43225
+muser_itl_milliseconds{quantile="0.95"} 38.43225
+# TYPE muser_dflash_acceptance_ratio gauge
+muser_dflash_acceptance_ratio 0
+# TYPE muser_phase_seconds_total counter
+# TYPE muser_phase_samples_total counter
+muser_phase_seconds_total{phase="queue"} 0.0000024589999999999997
+muser_phase_samples_total{phase="queue"} 1
+muser_phase_seconds_total{phase="prefill"} 0.37458525
+muser_phase_samples_total{phase="prefill"} 1
+muser_phase_seconds_total{phase="sampling"} 0.00023141600000000002
+muser_phase_samples_total{phase="sampling"} 2
+muser_phase_seconds_total{phase="grammar"} 0
+muser_phase_samples_total{phase="grammar"} 0
+muser_phase_seconds_total{phase="detokenization"} 0.000008708
+muser_phase_samples_total{phase="detokenization"} 3
+muser_phase_seconds_total{phase="enqueue_write"} 0.0000005
+muser_phase_samples_total{phase="enqueue_write"} 4
+muser_phase_seconds_total{phase="dflash_draft"} 0
+muser_phase_samples_total{phase="dflash_draft"} 0
+muser_phase_seconds_total{phase="dflash_target_verify"} 0
+muser_phase_samples_total{phase="dflash_target_verify"} 0
+# TYPE muser_request_decode_tok_s gauge
+muser_request_decode_tok_s 29.179
+# TYPE muser_decode_packed_batches_total counter
+muser_decode_packed_batches_total 0
+# TYPE muser_decode_packed_rows_total counter
+muser_decode_packed_rows_total 0
+# TYPE muser_decode_batch_width_last gauge
+muser_decode_batch_width_last 0

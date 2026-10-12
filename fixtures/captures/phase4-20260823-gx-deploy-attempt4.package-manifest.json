@@ -1,0 +1,62 @@
+[
+  {
+    "bytes": 11352,
+    "path": "Cargo.lock",
+    "sha256": "5d5410b6b9ed29ac91589afaf8a3b708e12a1962fbe0aa599139e3e87500eaad"
+  },
+  {
+    "bytes": 224,
+    "path": "Cargo.toml",
+    "sha256": "8a940ec91eafbe63c854abe5e68a18a9685a5ef35bb90ce9f6b1e83d581a7975"
+  },
+  {
+    "bytes": 940,
+    "path": "gx10-exporter/Cargo.toml",
+    "sha256": "4adf2c79c5ac42850314135e8311581fa39392b279d0bfafe3003041c95b43a2"
+  },
+  {
+    "bytes": 6104,
+    "path": "gx10-exporter/README.md",
+    "sha256": "41a62aa534a65449fbe547270598bd7f86d3498b9c5e3a9a165b5120ef371ec0"
+  },
+  {
+    "bytes": 14682,
+    "path": "gx10-exporter/src/expo.rs",
+    "sha256": "c80a1a6d454b4604d9c42f4360c118923742e9e5e14d09183bec4f31182490b0"
+  },
+  {
+    "bytes": 1516,
+    "path": "gx10-exporter/src/lib.rs",
+    "sha256": "72e825eb4d44435991573ca4b4191bb319222b5e8ffaecf5986b2240eaa60d3d"
+  },
+  {
+    "bytes": 333,
+    "path": "gx10-exporter/src/logging.rs",
+    "sha256": "37b493e2b676fdcb75f7515794fd6c622aa764eded42373a817973b9f91cbda7"
+  },
+  {
+    "bytes": 4057,
+    "path": "gx10-exporter/src/main.rs",
+    "sha256": "568473b27e554e81d689962ab8ca15c9882dc5e2cc9bbbc44af0978e50fb27ec"
+  },
+  {
+    "bytes": 20631,
+    "path": "gx10-exporter/src/nvml.rs",
+    "sha256": "7807987c66317182888b7389bb3c3a3fea04956751415047d3cf0b0be20fcbe6"
+  },
+  {
+    "bytes": 4852,
+    "path": "gx10-exporter/src/server.rs",
+    "sha256": "63df1459e1900f9cbfb938b27bb74620bbf356a6ae2c18aff416919ef80f0321"
+  },
+  {
+    "bytes": 3843,
+    "path": "gx10-exporter/src/source.rs",
+    "sha256": "b0c293ff85b2861d4fba98c16e4592c0899c25a67089cc8b21c16ec3bdebd38a"
+  },
+  {
+    "bytes": 15166,
+    "path": "gx10-exporter/tests/exposition.rs",
+    "sha256": "e810c6ffeba89a2c11d15099e274e426236e797ba2e450c96c072e0b51627b5a"
+  }
+]

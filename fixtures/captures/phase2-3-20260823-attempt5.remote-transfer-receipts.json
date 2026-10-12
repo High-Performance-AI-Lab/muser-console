@@ -1,0 +1,62 @@
+[
+  {
+    "handoff": {
+      "ack": true,
+      "generation": 1787529083,
+      "payload_bytes": 108998656,
+      "payload_wire_ns": 134000000,
+      "segments": 16,
+      "transfer_id": "muser-console-p23-1787529083-1"
+    },
+    "producer_mode": "native",
+    "request_id": "muser-console-p23-1787529083-1",
+    "status": "ok",
+    "token_count": 2048,
+    "total_ns": 1282384304
+  },
+  {
+    "handoff": {
+      "ack": true,
+      "generation": 1787529084,
+      "payload_bytes": 108998656,
+      "payload_wire_ns": 131000000,
+      "segments": 16,
+      "transfer_id": "muser-console-p23-1787529084-2"
+    },
+    "producer_mode": "native",
+    "request_id": "muser-console-p23-1787529084-2",
+    "status": "ok",
+    "token_count": 2048,
+    "total_ns": 1291505202
+  },
+  {
+    "handoff": {
+      "ack": true,
+      "generation": 1787529085,
+      "payload_bytes": 108998656,
+      "payload_wire_ns": 132000000,
+      "segments": 16,
+      "transfer_id": "muser-console-p23-1787529085-3"
+    },
+    "producer_mode": "native",
+    "request_id": "muser-console-p23-1787529085-3",
+    "status": "ok",
+    "token_count": 2048,
+    "total_ns": 1286703926
+  },
+  {
+    "handoff": {
+      "ack": true,
+      "generation": 1787529086,
+      "payload_bytes": 108998656,
+      "payload_wire_ns": 123000000,
+      "segments": 16,
+      "transfer_id": "muser-console-p23-1787529086-4"
+    },
+    "producer_mode": "native",
+    "request_id": "muser-console-p23-1787529086-4",
+    "status": "ok",
+    "token_count": 2048,
+    "total_ns": 1266507444
+  }
+]

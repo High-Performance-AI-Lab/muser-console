@@ -1,0 +1,16 @@
+[Unit]
+Description=muser-console GX10 NVML exporter
+Requires=docker.service
+After=docker.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/docker inspect muser-redhat-native-f1-593b96a
+ExecStart=/usr/bin/docker exec muser-redhat-native-f1-593b96a /usr/local/bin/gx10-exporter --listen 0.0.0.0:9707
+Restart=always
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

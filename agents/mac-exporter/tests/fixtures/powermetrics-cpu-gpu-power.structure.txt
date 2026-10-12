@@ -1,0 +1,66 @@
+# =============================================================================
+# STRUCTURE FIXTURE — NOT A MEASUREMENT
+#
+# WHAT THIS FILE IS
+#   A hand-written input for the mac-exporter powermetrics text parser. It
+#   exists to pin the parser's behaviour on the *shape* of the lines it
+#   recognizes — "<label>: <number><unit>" — and on its indifference to every
+#   other line in the stream.
+#
+# WHAT THIS FILE IS NOT
+#   It is NOT a capture of powermetrics output from this or any machine, and
+#   NONE of the numbers below is a measurement of anything. They were chosen to
+#   exercise number formats (integer, decimal, zero) and unit handling, not
+#   observed. No test in this crate asserts that any value here describes real
+#   hardware; the tests assert only which bytes the parser turns into which
+#   field. Do not quote a number from this file anywhere as a power reading,
+#   and do not render one in a UI.
+#
+# WHY IT IS HAND-WRITTEN
+#   powermetrics refuses to run without root. Observed on the machine this
+#   crate was written on, 2026-08-16, Darwin 25.5.0:
+#
+#       $ powermetrics --samplers cpu_power -n 1 -i 200
+#       powermetrics must be invoked as the superuser
+#       $ echo $?
+#       1
+#
+#   This project does not escalate privileges to manufacture a fixture, and it
+#   does not invent a capture. So the honest artifact is this one: a parser
+#   shape test that claims nothing about hardware. If an operator captures real
+#   powermetrics output under the accelerator discipline, it lands beside this
+#   file with a PROVENANCE entry, and this file stays exactly what it is.
+#
+# THE "#" LINES
+#   powermetrics has no comment syntax; these lines are not part of the format.
+#   The parser ignores every line it does not recognize, and a test asserts
+#   that stripping this header changes the parse result not at all.
+# =============================================================================
+
+*** Sampled system activity (structure fixture, no capture time) (200.00ms elapsed) ***
+
+**** Processor usage ****
+
+E-Cluster HW active frequency: 1000 MHz
+E-Cluster HW active residency:  12.34%
+E-Cluster idle residency:  87.66%
+P-Cluster HW active frequency: 2000 MHz
+P-Cluster HW active residency:  45.00%
+P-Cluster idle residency:  55.00%
+
+System instructions retired: 0
+System instructions per clock: 0
+
+ANE Power: 0 mW
+DRAM Power: 111 mW
+CPU Power: 1234 mW
+GPU Power: 56.25 mW
+Package Power: 1290.5 mW
+
+**** GPU usage ****
+
+GPU HW active frequency: 400 MHz
+GPU HW active residency:  3.00%
+GPU SW requested state: (P1 : 100%)
+GPU idle residency:  97.00%
+GPU Power: 56.25 mW

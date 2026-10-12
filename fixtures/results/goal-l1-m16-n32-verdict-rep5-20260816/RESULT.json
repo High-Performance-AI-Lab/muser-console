@@ -1,0 +1,276 @@
+{
+  "accelerator_touched": true,
+  "artifacts": {
+    "dflash": {
+      "bytes": 1631205312,
+      "path": "/data/models/dflash-kquant.gguf",
+      "sha256": "27d9a805fa29b943cfb6ad4843367cd4eaaaf06bd452d8cc3e00a2cd18a677bc"
+    },
+    "llama_receipt": {
+      "bytes": 1528,
+      "path": "/data/receipts/llama-comparator-89e0aa6fd362-v2/source-receipt.json",
+      "sha256": "37071efb4ba71462c09b60ecc3df994f576fe27069900eb5e0c31e0527e9aba5"
+    },
+    "llama_server": {
+      "bytes": 16747952,
+      "path": "/data/receipts/llama-comparator-89e0aa6fd362-v2/llama-server",
+      "sha256": "4c7b2bffa66cd5024ab615abbfc93b2a863508ef87dc32ce241a6ff032fe4772"
+    },
+    "llama_source_commit": "89e0aa6fd362617d9073e0dafc18e41241521572",
+    "model": {
+      "bytes": 16756681056,
+      "path": "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "sha256": "7e9b74b7c8875e9e265695df9613bf6290f2392e479ce740495a129019c488d8"
+    },
+    "muser_build_features": "default-metal-no-ane",
+    "muser_metallib": {
+      "bytes": 7314848,
+      "path": "/data/receipts/llama-metal-89e0aa6fd362/llama.metallib",
+      "sha256": "c018ab9c01c18bf79a83272d25973a981138bdeec9ac677e63afef07b21ac033"
+    },
+    "muser_metallib_receipt": {
+      "bytes": 1041,
+      "path": "/data/receipts/llama-metal-89e0aa6fd362/source-receipt.json",
+      "sha256": "29ae842f2f778260fc63b6c51769312264195811d71e8d50c2e93c3d4003deb0"
+    },
+    "muser_server": {
+      "bytes": 17398384,
+      "path": "/data/target-k/release/muser",
+      "sha256": "31fb7d8346ba0b203c76e59158a9d595ea4486755b5c1b5a3f2cf48c42c27b64"
+    },
+    "muser_version": "muser 0.1.0-alpha.1",
+    "prompt_fixture": {
+      "bytes": 10242,
+      "path": "/data/results/matrix-20260814/fixtures/prompt-2048.txt",
+      "sha256": "149ac0d9c37c957823e53c0637b52a38f2ac601089dbda9f98eec4bc5f369030"
+    }
+  },
+  "cell": {
+    "concurrency": 1,
+    "output_tokens": 256,
+    "prompt_tokens": 2048,
+    "speculative_type": "draft-dflash",
+    "target_only": false,
+    "verify_length": 15
+  },
+  "exact_tokens": true,
+  "first_mismatch": null,
+  "identity": "goal-l1-m16-n32-verdict-rep5",
+  "llama": {
+    "command": [
+      "/data/receipts/llama-comparator-89e0aa6fd362-v2/llama-server",
+      "-m",
+      "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8115",
+      "-t",
+      "20",
+      "-ngl",
+      "99",
+      "-b",
+      "2048",
+      "-ub",
+      "512",
+      "-ctk",
+      "f16",
+      "-ctv",
+      "f16",
+      "-fa",
+      "1",
+      "--parallel",
+      "1",
+      "-md",
+      "/data/models/dflash-kquant.gguf",
+      "--spec-type",
+      "draft-dflash",
+      "--spec-draft-n-max",
+      "15",
+      "--spec-draft-n-min",
+      "15",
+      "--spec-draft-p-min",
+      "0"
+    ],
+    "generated_tokens_sha256": "sha256:42f09900514bdf44e3ea7f3b1935da4091f3321fb4a390b67c76b994de40d259",
+    "server_log": "/data/results/goal-l1-m16-n32-verdict-rep5-20260816/RESULT.llama-server.log",
+    "timings": {
+      "cache_n": 0,
+      "draft_n": 239,
+      "draft_n_accepted": 239,
+      "predicted_ms": 3149.526,
+      "predicted_n": 256,
+      "predicted_per_second": 81.28207228643295,
+      "predicted_per_token_ms": 12.3028359375,
+      "prompt_ms": 6779.011,
+      "prompt_n": 2048,
+      "prompt_per_second": 302.10896545233516,
+      "prompt_per_token_ms": 3.31006396484375
+    },
+    "ttft_ns": 6779323625,
+    "wall_ns": 9929608917
+  },
+  "measurement": {
+    "muser_telemetry": "authenticated /snapshot before/after the measured request; monotonic phase counters are differenced including dflash_draft/dflash_target_verify",
+    "prefill_decode": "server final timing object",
+    "sample": "one 2048+256 uncached streamed request per engine, DFlash route",
+    "stop_contract": "no ignore_eos on either engine; EOS stops both lanes",
+    "ttft": "request-send-complete to first raw token SSE event",
+    "warmup": "one 2048+1 uncached streamed request per engine"
+  },
+  "muser": {
+    "command": [
+      "/data/target-k/release/muser",
+      "serve",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "4975",
+      "--model",
+      "/data/models/muse-glimmer-30B-kquant-17gb.gguf",
+      "--backend",
+      "metal",
+      "--parallel",
+      "1",
+      "--prefix-cache",
+      "off",
+      "--benchmark-shutdown-token",
+      "e1fc44adcb452f0731040ecc6cfb59e65a8da2b187ed6130681cdc41d6f5ae03",
+      "--benchmark-deadline-seconds",
+      "1800",
+      "--api-key-file",
+      "/data/results/goal-l1-m16-n32-verdict-rep5-20260816/.representative-dflash-api-key.mnt1vsh2",
+      "--dflash",
+      "/data/models/dflash-kquant.gguf",
+      "--dflash-backend",
+      "metal"
+    ],
+    "generated_tokens_sha256": "sha256:42f09900514bdf44e3ea7f3b1935da4091f3321fb4a390b67c76b994de40d259",
+    "server_log": "/data/results/goal-l1-m16-n32-verdict-rep5-20260816/RESULT.muser-server.log",
+    "telemetry_delta": {
+      "completion_tokens": {
+        "after": 257,
+        "before": 1,
+        "delta": 256
+      },
+      "decode": {
+        "last_request_decode_tok_s": 107.913,
+        "server_final_predicted_ms": 2372.2692499999994
+      },
+      "isolation": "parallel=1; snapshot after warmup and immediately before/after request",
+      "limitations": [
+        "wire.ttft_ms is a rolling percentile window, not a subtractable request counter",
+        "last_request_decode_tok_s is a gauge; isolation makes its post-request value attributable",
+        "unconstrained requests legitimately produce a zero grammar-phase delta"
+      ],
+      "phases": {
+        "detokenization": {
+          "mean_ms": 0.00010943579766536965,
+          "samples": 257,
+          "total_ms": 0.028125
+        },
+        "enqueue_write": {
+          "mean_ms": 0.0014335136186770427,
+          "samples": 257,
+          "total_ms": 0.368413
+        },
+        "grammar": {
+          "mean_ms": null,
+          "samples": 0,
+          "total_ms": 0.0
+        },
+        "prefill": {
+          "mean_ms": 6607.461708,
+          "samples": 1,
+          "total_ms": 6607.461708
+        },
+        "queue": {
+          "mean_ms": 0.00037499999999999995,
+          "samples": 1,
+          "total_ms": 0.00037499999999999995
+        },
+        "sampling": {
+          "mean_ms": null,
+          "samples": 0,
+          "total_ms": 0.0
+        }
+      },
+      "prefill": {
+        "phase_counter_delta": {
+          "mean_ms": 6607.461708,
+          "samples": 1,
+          "total_ms": 6607.461708
+        },
+        "server_final_prompt_ms": 6781.9596249999995
+      },
+      "queue_depth": {
+        "after": 0,
+        "before": 0,
+        "semantics": "endpoint gauge; queue duration is phases.queue.total_ms"
+      },
+      "schema": "muser.request-telemetry-delta.v1",
+      "spec_phases": {
+        "dflash_draft": {
+          "mean_ms": 436.778959,
+          "samples": 1,
+          "total_ms": 436.778959
+        },
+        "dflash_target_verify": {
+          "mean_ms": 2096.481457,
+          "samples": 1,
+          "total_ms": 2096.481457
+        }
+      },
+      "ttft": {
+        "request_local_client_ns": 6782281250,
+        "snapshot_delta_available": false,
+        "snapshot_window_after_ms": {
+          "p50": 6781.959167,
+          "p95": 6781.959167
+        },
+        "snapshot_window_before_ms": {
+          "p50": 6718.918417,
+          "p95": 6718.918417
+        }
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "predicted_ms": 2372.2692499999994,
+      "predicted_n": 256,
+      "predicted_per_second": 107.91355154985045,
+      "predicted_per_token_ms": 9.266676757812498,
+      "prompt_ms": 6781.9596249999995,
+      "prompt_n": 2048,
+      "prompt_per_second": 301.9776160935196,
+      "prompt_per_token_ms": 3.311503723144531
+    },
+    "ttft_ns": 6782281250,
+    "wall_ns": 9154539417
+  },
+  "notarial": false,
+  "output_tokens_generated": 256,
+  "preflight": {
+    "accelerator_or_model_initialized": false,
+    "output_writable": "/data/results/goal-l1-m16-n32-verdict-rep5-20260816/RESULT.json",
+    "ports_available": [
+      "http://127.0.0.1:4975",
+      "http://127.0.0.1:8115"
+    ],
+    "required_environment": {
+      "MUSER_DFLASH_VERIFY_LEN": "15",
+      "MUSER_GGML_METALLIB": "/data/receipts/llama-metal-89e0aa6fd362/llama.metallib"
+    }
+  },
+  "ratios_llama_over_muser": {
+    "decode": 1.3276427201507588,
+    "prefill": 0.9995652252205793,
+    "ttft": 0.9995639188510503,
+    "wall": 1.0846650459072462
+  },
+  "schema": "muser.representative-dflash-smoke.v1",
+  "seal_eligible": false,
+  "status": "passed",
+  "target_only_digest_expected": "sha256:42f09900514bdf44e3ea7f3b1935da4091f3321fb4a390b67c76b994de40d259",
+  "target_only_digest_match": true
+}

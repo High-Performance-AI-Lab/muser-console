@@ -1,0 +1,3 @@
+interface:
+  display_name: "Muser Console Up"
+  short_description: "Stand up the standalone Muser fleet console"

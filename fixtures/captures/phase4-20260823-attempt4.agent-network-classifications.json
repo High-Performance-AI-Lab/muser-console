@@ -1,0 +1,117 @@
+{
+  "requests": [
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "mac",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "mac",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "mac",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "mac",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "mac",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "mac",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "gx10",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "gx10",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "gx10",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "gx10",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "gx10",
+      "method": "GET",
+      "path": "/metrics"
+    },
+    {
+      "accept_encoding_identity": true,
+      "authorization_present": false,
+      "cookie_present": false,
+      "csrf_present": false,
+      "kind": "gx10",
+      "method": "GET",
+      "path": "/metrics"
+    }
+  ],
+  "summary": {
+    "all_keyless": true,
+    "gx10_requests": 6,
+    "mac_requests": 6
+  }
+}

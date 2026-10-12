@@ -1,0 +1,125 @@
+{
+  "after_loopback_b_restart": {
+    "empty": "no current session events from any instance",
+    "rows": [],
+    "sources": [
+      {
+        "classes": [
+          "evsrc",
+          "live"
+        ],
+        "text": "secure-a \u00b7 live"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "live"
+        ],
+        "text": "loopback-b \u00b7 live"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "other-ca-a \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "platform-a \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "mismatch-a \u00b7 disconnected"
+      }
+    ]
+  },
+  "before": {
+    "empty": "no current session events from any instance",
+    "rows": [],
+    "sources": [
+      {
+        "classes": [
+          "evsrc",
+          "live"
+        ],
+        "text": "secure-a \u00b7 live"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "live"
+        ],
+        "text": "loopback-b \u00b7 live"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "other-ca-a \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "platform-a \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "mismatch-a \u00b7 disconnected"
+      }
+    ]
+  },
+  "while_loopback_b_down": {
+    "empty": "no current session events from any instance",
+    "rows": [],
+    "sources": [
+      {
+        "classes": [
+          "evsrc",
+          "live"
+        ],
+        "text": "secure-a \u00b7 live"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "loopback-b \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "other-ca-a \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "platform-a \u00b7 disconnected"
+      },
+      {
+        "classes": [
+          "evsrc",
+          "disconnected"
+        ],
+        "text": "mismatch-a \u00b7 disconnected"
+      }
+    ]
+  }
+}

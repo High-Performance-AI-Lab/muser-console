@@ -1,0 +1,16 @@
+{
+  "no_ticket": {
+    "rejected": true
+  },
+  "ticketed": {
+    "bytes": 2763,
+    "hello": {
+      "schema": "muser.telemetry.v2",
+      "type": "hello"
+    },
+    "messages": 2,
+    "ok": true,
+    "seq": 0,
+    "type": "snapshot"
+  }
+}

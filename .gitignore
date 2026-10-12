@@ -1,0 +1,7 @@
+/target
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+/console.toml
+/data/
+.DS_Store

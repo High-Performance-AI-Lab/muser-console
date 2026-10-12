@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://muser-console.invalid/schema/runtime-extensions-v1.json",
+  "title": "muser runtime snapshot extensions consumed by muser-console",
+  "description": "Console-owned companion to the verbatim imported metrics-schema.json. It contracts fields emitted by muser@753c2a5 that intentionally remain outside that strict published schema. A live snapshot must satisfy this schema and, after removing only these named extensions, the imported schema.",
+  "type": "object",
+  "required": ["transfers", "_dflash_acceptance"],
+  "properties": {
+    "transfers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["active_drain_gbps", "_active_drain_ns"],
+        "properties": {
+          "active_drain_gbps": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Measured installed payload bits divided by the receiver's active post-first-byte segment-drain span. This is not the end-to-end transfer throughput field."
+          },
+          "_active_drain_ns": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Measured receiver active post-first-byte segment-drain span in nanoseconds; backing duration for active_drain_gbps."
+          }
+        }
+      }
+    },
+    "_dflash_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dflash_drafted_tokens",
+        "dflash_accepted_tokens",
+        "dflash_rounds",
+        "dflash_disabled",
+        "dflash_disabled_at_tokens",
+        "dflash_disable_events",
+        "draft_sink_size",
+        "draft_sliding_window"
+      ],
+      "properties": {
+        "dflash_drafted_tokens": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-monotonic measured draft tokens verified against the target."
+        },
+        "dflash_accepted_tokens": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-monotonic measured tokens accepted from the draft."
+        },
+        "dflash_rounds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-monotonic measured target verification rounds."
+        },
+        "dflash_disabled": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-monotonic count of requests that finished with DFlash speculation disabled."
+        },
+        "dflash_disabled_at_tokens": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-monotonic sum of committed-token positions at gate closures."
+        },
+        "dflash_disable_events": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-monotonic measured gate-closure events, including close/reopen cycles."
+        },
+        "draft_sink_size": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Last-value effective draft sink geometry of the most recent DFlash request."
+        },
+        "draft_sliding_window": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Last-value effective draft sliding-window geometry of the most recent DFlash request."
+        }
+      }
+    }
+  }
+}

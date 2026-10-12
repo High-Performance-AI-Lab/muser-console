@@ -1,0 +1,17 @@
+{
+  "forbidden_remote_plaintext": {
+    "classification_matched": true,
+    "exit_code": 1,
+    "rejected": true
+  },
+  "missing_pair": {
+    "classification_matched": true,
+    "exit_code": 1,
+    "rejected": true
+  },
+  "wrong_key_mode": {
+    "classification_matched": true,
+    "exit_code": 1,
+    "rejected": true
+  }
+}

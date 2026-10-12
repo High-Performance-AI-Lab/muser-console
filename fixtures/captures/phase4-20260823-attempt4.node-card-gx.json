@@ -1,0 +1,105 @@
+{
+  "card": {
+    "comparisons": {
+      "memory_unavailable": {
+        "display": "\u2014",
+        "exact": true,
+        "expected": "\u2014"
+      },
+      "power_watts": {
+        "display": 8.0,
+        "measured": 7.964,
+        "rounding_tolerance": 0.500001
+      },
+      "temperature_celsius": {
+        "display": 40.0,
+        "measured": 40.0,
+        "rounding_tolerance": 0.500001
+      },
+      "utilization_percent": {
+        "display": 0.0,
+        "measured": 0.0,
+        "rounding_tolerance": 0.500001
+      }
+    },
+    "honesty_badges": [
+      "agent-measured"
+    ],
+    "identity": "gpu0",
+    "pass": true,
+    "text": "GPU 0\ngpu0\nagent gx-agent \u00b7 gx10\n0%\nUTILIZATION AGENT-MEASURED\nMEM\n\u2014\nUTIL\n0%\nPWR\n8 W\nTEMP\n40\u00b0"
+  },
+  "card_history_to_ms": 1787525328981,
+  "cards": [
+    {
+      "big": "0%",
+      "honesty_badges": [
+        "agent-measured"
+      ],
+      "identity": "gpu0",
+      "metrics": {
+        "mem": "\u2014",
+        "pwr": "8 W",
+        "temp": "40\u00b0",
+        "util": "0%"
+      },
+      "text": "GPU 0\ngpu0\nagent gx-agent \u00b7 gx10\n0%\nUTILIZATION AGENT-MEASURED\nMEM\n\u2014\nUTIL\n0%\nPWR\n8 W\nTEMP\n40\u00b0"
+    }
+  ],
+  "history_heading": "remote-a",
+  "history_instance": "remote-a",
+  "history_window_present": true,
+  "instance": "remote-a",
+  "panel": {
+    "gpus": [
+      {
+        "index": 0,
+        "memTotal": null,
+        "memUsed": null,
+        "power": 7.964,
+        "temp": 40,
+        "util": 0
+      }
+    ],
+    "host": null
+  },
+  "pass": true,
+  "series": {
+    "gpu0_power_watts": {
+      "browser": {
+        "honesty": "agent-measured",
+        "ts": 1787525328980,
+        "v": 7.964
+      },
+      "exact": true,
+      "history": [
+        1787525328980,
+        7.964
+      ]
+    },
+    "gpu0_temperature_celsius": {
+      "browser": {
+        "honesty": "agent-measured",
+        "ts": 1787525328980,
+        "v": 40
+      },
+      "exact": true,
+      "history": [
+        1787525328980,
+        40.0
+      ]
+    },
+    "gpu0_utilization_ratio": {
+      "browser": {
+        "honesty": "agent-measured",
+        "ts": 1787525328980,
+        "v": 0
+      },
+      "exact": true,
+      "history": [
+        1787525328980,
+        0.0
+      ]
+    }
+  }
+}
